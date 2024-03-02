@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class PlayerActions : MonoBehaviour
     private Vector3 _movement;
     private Rigidbody _rb;
     private ShowMinigame _showMinigame; // Script of enemy near player
+
+    public static event Action PlayerSucceeded;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -58,6 +61,11 @@ public class PlayerActions : MonoBehaviour
         if (_showMinigame != null)
         {
             success = _showMinigame.CheckPlayerSuccess();
+
+            if (success)
+            {
+                PlayerSucceeded?.Invoke();
+            }
 
             Debug.Log(success ? "You did it!" : "You didn't do it...");
 

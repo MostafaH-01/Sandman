@@ -8,37 +8,38 @@ using UnityEngine.Pool;
 public class PoolingSystem : MonoBehaviour
 {
     #region Variables
-    public ObjectPool<GameObject> pool;
-    [SerializeField] private GameObject pooledObject;
+    public ObjectPool<EnemyScript> pool;
+    [SerializeField] private EnemyScript pooledObject;
     [SerializeField] private Transform[] spawnPoints;
     #endregion
 
     #region Awake
     void Awake()
     {
-        pool = new ObjectPool<GameObject>(CreateObject, ActivateObject, DeactivateObject, DestroyObject, true, 10, 15);
+        pool = new ObjectPool<EnemyScript>(CreateObject, ActivateObject, DeactivateObject, DestroyObject, true, 10, 15);
     }
     #endregion
 
     #region Pool Methods
-    private GameObject CreateObject()
+    private EnemyScript CreateObject()
     {
-        GameObject spawnedObject = Instantiate(pooledObject, RandomPosition(), Quaternion.identity);
+        EnemyScript spawnedObject = Instantiate(pooledObject, RandomPosition(), Quaternion.identity);
+        spawnedObject._poolingSystem = this;
         return spawnedObject;
     }
 
-    private void ActivateObject(GameObject pooledObject)
+    private void ActivateObject(EnemyScript pooledObject)
     {
         pooledObject.transform.position = RandomPosition();
         pooledObject.gameObject.SetActive(true);
     }
 
-    private void DeactivateObject(GameObject pooledObject)
+    private void DeactivateObject(EnemyScript pooledObject)
     {
         pooledObject.gameObject.SetActive(false);
     }
 
-    private void DestroyObject(GameObject pooledObject)
+    private void DestroyObject(EnemyScript pooledObject)
     {
         Destroy(pooledObject.gameObject);
     }
