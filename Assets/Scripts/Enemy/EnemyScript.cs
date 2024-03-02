@@ -56,7 +56,7 @@ public class EnemyScript : MonoBehaviour
         _startTime = 0f;
 
         Color color = _material.color;
-        color.a = 255;
+        color.a = 1;
         _material.color = color;
         poolingSystem.pool.Release(this);
     }

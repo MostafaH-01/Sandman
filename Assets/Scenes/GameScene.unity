@@ -312,7 +312,7 @@ MonoBehaviour:
   - {fileID: 652971897}
   - {fileID: 310057244}
   - {fileID: 1709116181}
-  spawnRate: 5
+  spawnRate: 10
 --- !u!4 &22625125
 Transform:
   m_ObjectHideFlags: 0

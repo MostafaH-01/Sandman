@@ -9,6 +9,7 @@ public class PathMovement : MonoBehaviour
     private Path path;
     private NavMeshAgent agent;
     private int wayPointIndex;
+    private bool reachedHouse;
 
     public Path Path
     {
@@ -22,12 +23,21 @@ public class PathMovement : MonoBehaviour
         }
     }
     #endregion
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
+    {
+        Debug.Log(wayPointIndex);
+    }
+
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Start()
     {
         wayPointIndex = 0;
-        agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(path.PathNodes[wayPointIndex].transform.position);
+        reachedHouse = false;
     }
 
     // Update is called once per frame
@@ -44,14 +54,28 @@ public class PathMovement : MonoBehaviour
         {
             if (wayPointIndex == path.PathNodes.Length - 1) 
             {
-                // release enemy
+                if(!reachedHouse)
+                {
+                    GetComponent<EnemyScript>().ReachedHouse();
+                    reachedHouse = true;
+                }
             }
             else
             {
                 wayPointIndex++;
-                Debug.Log(wayPointIndex);
                 agent.SetDestination(path.PathNodes[wayPointIndex].transform.position);
             }
         }
+    }
+
+    public void SetAgentDestination()
+    {
+        agent.SetDestination(path.PathNodes[wayPointIndex].transform.position);
+    }
+
+    private void OnDisable()
+    {
+        wayPointIndex = 0;
+        reachedHouse= false;
     }
 }

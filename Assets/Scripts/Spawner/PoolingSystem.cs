@@ -32,8 +32,8 @@ public class PoolingSystem : MonoBehaviour
     private void ActivateObject(EnemyScript pooledObject)
     {
         pooledObject.transform.position = RandomPosition();
-        AssignPath(pooledObject);
         pooledObject.gameObject.SetActive(true);
+        AssignPath(pooledObject);
     }
 
     private void DeactivateObject(EnemyScript pooledObject)
@@ -59,6 +59,7 @@ public class PoolingSystem : MonoBehaviour
         int randomPath = UnityEngine.Random.Range(0, pathsStorage.paths.Length);
         PathMovement enemyPathScript = spawnedObject.GetComponent<PathMovement>();
         enemyPathScript.Path = pathsStorage.paths[randomPath];
+        enemyPathScript.SetAgentDestination();
     }
     #endregion
 }
