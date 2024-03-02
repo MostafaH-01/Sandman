@@ -26,7 +26,10 @@ public class PlayerActions : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if (inputScript.Movement != Vector2.zero)
+        {
+            Move();
+        }
     }
 
     private void Move()
@@ -46,6 +49,9 @@ public class PlayerActions : MonoBehaviour
         _movement = new Vector3(movementDirection.x, 0, movementDirection.z);
 
         _rb.velocity = _movement * speed * Time.deltaTime;
+
+        // Look away from the camera (same direction as it's pointing)
+        this.transform.LookAt(transform.position - (Camera.main.transform.position - transform.position));
     }
 
     public void StartConvertNightmare()
