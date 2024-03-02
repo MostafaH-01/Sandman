@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    public PoolingSystem _poolingSystem;
-    public ParticleSystem _particleSystem;
-    public SkinnedMeshRenderer _renderer;
-    public float _particleDuration;
+    public PoolingSystem poolingSystem;
+    public ParticleSystem particleSystemPlayerWon;
+    public ParticleSystem particleSystemEnemyReached;
+    public SkinnedMeshRenderer renderer;
+    public float particleDuration;
+
     private Material _material;
+    private float _startTime = 0f;
 
     bool _ghostDisappearing = false;
 
     private void Start()
     {
-        _material = _renderer.material;
+        _material = renderer.material;
     }
     private void OnPlayerSuccess()
     {
-        _particleSystem.Play();
+        particleSystemPlayerWon.Play();
+
+        _startTime = Time.time;
         _ghostDisappearing = true;
     }
     private void Update()
@@ -26,7 +31,8 @@ public class EnemyScript : MonoBehaviour
         if ( _ghostDisappearing )
         {
             Color color = _material.color;
-            color.a = Mathf.Lerp(color.a, 0, _particleDuration * Time.deltaTime);
+            color.a = Mathf.Lerp(color.a, 0, (Time.time - _startTime) / (particleDuration+2f));
+            Debug.Log("Alpha: " + color.a);
             _material.color = color;
         }
     }
@@ -39,13 +45,19 @@ public class EnemyScript : MonoBehaviour
         PlayerActions.PlayerSucceeded -= OnPlayerSuccess;
     }
 
+    public void ReachedHouse()
+    {
+        particleSystemEnemyReached.Play();
+    }
+
     public void ParticleSystemStopped()
     {
         _ghostDisappearing = false;
+        _startTime = 0f;
 
         Color color = _material.color;
         color.a = 255;
         _material.color = color;
-        _poolingSystem.pool.Release(this);
+        poolingSystem.pool.Release(this);
     }
 }

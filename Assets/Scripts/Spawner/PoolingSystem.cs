@@ -25,7 +25,7 @@ public class PoolingSystem : MonoBehaviour
     private EnemyScript CreateObject()
     {
         EnemyScript spawnedObject = Instantiate(pooledObject, RandomPosition(), Quaternion.identity);
-        spawnedObject._poolingSystem = this;
+        spawnedObject.poolingSystem = this;
         return spawnedObject;
     }
 
