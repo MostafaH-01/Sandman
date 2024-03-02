@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Nightmare
+  - PathEnd
   layers:
   - Default
   - TransparentFX
