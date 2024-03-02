@@ -70,6 +70,7 @@ public class PlayerActions : MonoBehaviour
 
             if (success)
             {
+                _showMinigame.ConvertGhost();
                 PlayerSucceeded?.Invoke();
             }
 

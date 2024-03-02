@@ -22,6 +22,7 @@ public class ShowMinigame : MonoBehaviour
 
     private bool activated = false; // Minigame Started
     private bool rightLeftFlag = false; // Left to right if true, right to left if false
+    private bool converted = false;
     #endregion
 
     void Update()
@@ -44,8 +45,11 @@ public class ShowMinigame : MonoBehaviour
     // When player holds mouse
     public void StartConvertNightmare ()
     {
-        ResetMiniGame();
-        activated = true;
+        if (!converted)
+        {
+            ResetMiniGame();
+            activated = true;
+        }
     }
     public void StopConvertNightmare()
     {
@@ -64,8 +68,16 @@ public class ShowMinigame : MonoBehaviour
     // When player enters or exits trigger area
     public void ShowOrHidePopup()
     {
-        ResetMiniGame();
-        canvasParent.SetActive(!canvasParent.activeSelf);
+        if (!converted)
+        {
+            ResetMiniGame();
+            canvasParent.SetActive(!canvasParent.activeSelf);
+        }
+    }
+
+    public void ConvertGhost()
+    {
+        converted = true;
     }
 
     private void ResetMiniGame()
