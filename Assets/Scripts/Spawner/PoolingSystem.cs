@@ -11,6 +11,7 @@ public class PoolingSystem : MonoBehaviour
     public ObjectPool<EnemyScript> pool;
     [SerializeField] private EnemyScript pooledObject;
     [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private PathsStorage pathsStorage;
     #endregion
 
     #region Awake
@@ -31,6 +32,7 @@ public class PoolingSystem : MonoBehaviour
     private void ActivateObject(EnemyScript pooledObject)
     {
         pooledObject.transform.position = RandomPosition();
+        AssignPath(pooledObject);
         pooledObject.gameObject.SetActive(true);
     }
 
@@ -45,11 +47,18 @@ public class PoolingSystem : MonoBehaviour
     }
     #endregion
 
-    #region Randomization Method
+    #region Randomization and Path Assignment
     private Vector3 RandomPosition()
     {
         int randomNumber = UnityEngine.Random.Range(0, spawnPoints.Length);
         return spawnPoints[randomNumber].position;
+    }
+
+    private void AssignPath(EnemyScript spawnedObject)
+    {
+        int randomPath = UnityEngine.Random.Range(0, pathsStorage.paths.Length);
+        PathMovement enemyPathScript = spawnedObject.GetComponent<PathMovement>();
+        enemyPathScript.Path = pathsStorage.paths[randomPath];
     }
     #endregion
 }

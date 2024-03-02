@@ -6,7 +6,7 @@ public class Path : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField] Node[] pathNodes;
+    [SerializeField] private Node[] pathNodes;
 
     public Node[] PathNodes
     {

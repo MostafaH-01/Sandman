@@ -6,11 +6,8 @@ public class EnemySpawner : MonoBehaviour
 {
     #region Variables
     [Header("Object to Spawn and Rate")]
-    [SerializeField] PoolingSystem enemyPool;
+    [SerializeField] PoolingSystem[] enemyPools;
     [SerializeField] float spawnRate;
-
-    [Header("Paths Creation for Enemies")]
-    [SerializeField] Path[] paths;
     private bool canSpawn = true;
 
     #endregion
@@ -31,7 +28,9 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator Spawn()
     {
         canSpawn = false;
-        enemyPool.pool.Get();
+
+        int randomPool = Random.Range(0, enemyPools.Length);
+        EnemyScript enemy = enemyPools[randomPool].pool.Get();
         yield return new WaitForSeconds(spawnRate);
         canSpawn = true;
     }
