@@ -85,7 +85,7 @@ public class PlayerActions : MonoBehaviour
     {
         if (other.tag == "Nightmare")
         {
-            _enemyScript = other.GetComponent<EnemyScript>();
+            _enemyScript = other.transform.parent.GetComponent<EnemyScript>();
             _showMinigame = other.GetComponent<ShowMinigame>();
             _showMinigame.ShowOrHidePopup();
         }

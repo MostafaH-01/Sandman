@@ -12,6 +12,8 @@ public class InputScript : MonoBehaviour
     private InputActionReference move;
     [SerializeField]
     private InputActionReference convert;
+    [SerializeField]
+    private InputActionReference pause;
 
     [Header("Player Script")]
     [SerializeField]
@@ -20,6 +22,9 @@ public class InputScript : MonoBehaviour
     private Vector2 _movement;
 
     private Action<InputAction.CallbackContext> convertTrigger;
+    private Action<InputAction.CallbackContext> pauseTrigger;
+
+    public static event Action pauseMenuTriggered;
     #endregion
     public Vector2 Movement
     {
@@ -31,6 +36,7 @@ public class InputScript : MonoBehaviour
     private void Awake()
     {
         convertTrigger = (ctx) => convertBtnPressed();
+        pauseTrigger = (ctx) => PauseButtonPressed();
     }
 
     // Update is called once per frame
@@ -55,6 +61,11 @@ public class InputScript : MonoBehaviour
         // Start minigame
         playerActions.StartConvertNightmare();
     }
+
+    private void PauseButtonPressed()
+    {
+        pauseMenuTriggered?.Invoke();
+    }
     #endregion
     #region Event Subscribing
     private void OnEnable()
@@ -62,12 +73,16 @@ public class InputScript : MonoBehaviour
         convert.action.started += convertBtnHeld;
         convert.action.performed += convertTrigger;
         convert.action.canceled += convertTrigger;
+
+        pause.action.performed += pauseTrigger;
     }
     private void OnDisable()
     {
         convert.action.started -= convertBtnHeld;
         convert.action.performed -= convertTrigger;
         convert.action.canceled -= convertTrigger;
+
+        pause.action.performed -= pauseTrigger;
     }
     #endregion
 }

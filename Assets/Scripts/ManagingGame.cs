@@ -25,6 +25,12 @@ public class ManagingGame : MonoBehaviour
     private TextMeshProUGUI timerText;
     [SerializeField]
     private Slider pointSlider;
+    [SerializeField]
+    private GameObject pauseMenu;
+    [SerializeField]
+    private GameObject winMenu;
+    [SerializeField]
+    private GameObject loseMenu;
 
     [Header("Game Settings")]
     [SerializeField]
@@ -39,14 +45,7 @@ public class ManagingGame : MonoBehaviour
 
     private void Start()
     {
-        _currentTime = gameDuration;
-
-        // Set slider min and max value to points max
-        pointSlider.minValue = -pointsToEndGame;
-        pointSlider.maxValue = pointsToEndGame;
-
-        UpdatePointsSlider();
-        UpdateTimerDisplay();
+        ResetGame();
     }
     private void Update()
     {
@@ -76,12 +75,14 @@ public class ManagingGame : MonoBehaviour
         {
             // Won game
             EndGame();
+            winMenu.SetActive(true);
             Debug.Log("You won!");
         }
         else if ((!gameEnded && _points <= -pointsToEndGame) || (gameEnded && _points < 0))
         {
             // Lost game
             EndGame();
+            loseMenu.SetActive(true);
             Debug.Log("You lost womp womp");
         }
     }
@@ -90,6 +91,19 @@ public class ManagingGame : MonoBehaviour
         _gameStarted = false;
         Spawning.SetActive(false);
         InputManager.SetActive(false);
+    }
+
+    public void ResetGame()
+    {
+        _currentTime = gameDuration;
+        _points = 0;
+
+        // Set slider min and max value to points max
+        pointSlider.minValue = -pointsToEndGame;
+        pointSlider.maxValue = pointsToEndGame;
+
+        UpdatePointsSlider();
+        UpdateTimerDisplay();
     }
     #endregion
     #region UI Methods
@@ -116,16 +130,23 @@ public class ManagingGame : MonoBehaviour
     {
         pointSlider.value = _points;
     }
+    public void PauseMenu()
+    {
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
+        Time.timeScale = Time.timeScale == 1 ? 0 : 1;
+    }
     #endregion
 
     #region Subscribing To Events
     private void OnEnable()
     {
         EnemyScript.GhostArrived += PointManagement;
+        InputScript.pauseMenuTriggered += PauseMenu;
     }
     private void OnDisable()
     {
         EnemyScript.GhostArrived -= PointManagement;
+        InputScript.pauseMenuTriggered -= PauseMenu;
     }
     #endregion
 }

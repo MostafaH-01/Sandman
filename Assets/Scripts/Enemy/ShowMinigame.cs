@@ -12,6 +12,8 @@ public class ShowMinigame : MonoBehaviour
     private GameObject canvasParent;
     [SerializeField]
     private Slider slider;
+    [SerializeField]
+    private Image sliderCenterFillImage;
     [Header("Minigame Settings")]
     [SerializeField]
     private float sliderIncrement;
@@ -19,10 +21,13 @@ public class ShowMinigame : MonoBehaviour
     private float lowerBoundSliderWin;
     [SerializeField]
     private float upperBoundSliderWin;
+    [SerializeField]
+    private float redFlashDuration = 0.2f;
 
     private bool activated = false; // Minigame Started
     private bool rightLeftFlag = false; // Left to right if true, right to left if false
     private bool converted = false;
+    private Color _colorRed = Color.red;
     #endregion
 
     void Update()
@@ -62,6 +67,7 @@ public class ShowMinigame : MonoBehaviour
     {
         if (slider.value >= lowerBoundSliderWin && slider.value <= upperBoundSliderWin)
             return true;
+        StartCoroutine(FlashRoutine());
         return false;
     }
 
@@ -85,5 +91,11 @@ public class ShowMinigame : MonoBehaviour
     {
         slider.value = 1;
         rightLeftFlag = false;
+    }
+    private IEnumerator FlashRoutine()
+    {
+        sliderCenterFillImage.color = _colorRed;
+        yield return new WaitForSeconds(redFlashDuration);
+        sliderCenterFillImage.color = Color.white;
     }
 }

@@ -60,6 +60,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasParent: {fileID: 0}
   slider: {fileID: 0}
+  sliderCenterFillImage: {fileID: 0}
   sliderIncrement: 0.01
   lowerBoundSliderWin: 0.615
   upperBoundSliderWin: 0.77
+  redFlashDuration: 0.2
