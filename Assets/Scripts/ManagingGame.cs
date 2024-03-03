@@ -31,6 +31,8 @@ public class ManagingGame : MonoBehaviour
     private GameObject winMenu;
     [SerializeField]
     private GameObject loseMenu;
+    [SerializeField]
+    private GameObject endScreen;
 
     [Header("Game Settings")]
     [SerializeField]
@@ -75,6 +77,7 @@ public class ManagingGame : MonoBehaviour
         {
             // Won game
             EndGame();
+            endScreen.SetActive(true);
             winMenu.SetActive(true);
             Debug.Log("You won!");
         }
@@ -82,6 +85,7 @@ public class ManagingGame : MonoBehaviour
         {
             // Lost game
             EndGame();
+            endScreen.SetActive(true);
             loseMenu.SetActive(true);
             Debug.Log("You lost womp womp");
         }
@@ -132,6 +136,7 @@ public class ManagingGame : MonoBehaviour
     }
     public void PauseMenu()
     {
+        HUD.SetActive(!HUD.activeSelf);
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         Time.timeScale = Time.timeScale == 1 ? 0 : 1;
     }
