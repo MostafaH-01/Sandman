@@ -8,7 +8,7 @@ public class EnemyScript : MonoBehaviour
     public PoolingSystem poolingSystem;
     public ParticleSystem particleSystemGoodGhost;
     public ParticleSystem particleSystemBadGhost;
-    public SkinnedMeshRenderer badGhostRenderer;
+    public GameObject badGhostRenderer;
     public GameObject goodGhostRenderer;
     public float particleGoodDuration = 5f;
     public float particleBadDuration = 1f;
@@ -17,30 +17,13 @@ public class EnemyScript : MonoBehaviour
 
     private float _particleDuration;
     private bool _goodOrBad = false; // true is good, bad is false
-    private Material _material;
-    private float _startTime = 0f;
 
     bool _ghostDisappearing = false;
-
-    private void Start()
-    {
-        _material = badGhostRenderer.material;
-    }
     private void OnPlayerSuccess() // Ghost converted
     {
         _goodOrBad = true;
-        badGhostRenderer.gameObject.SetActive(false);
+        badGhostRenderer.SetActive(false);
         goodGhostRenderer.SetActive(true);
-    }
-    private void Update()
-    {
-        if ( _ghostDisappearing )
-        {
-            Color color = _material.color;
-            color.a = Mathf.Lerp(color.a, 0, (Time.time - _startTime) / _particleDuration);
-            Debug.Log("Alpha: " + color.a);
-            _material.color = color;
-        }
     }
     private void OnEnable()
     {
@@ -53,8 +36,6 @@ public class EnemyScript : MonoBehaviour
 
     public void ReachedHouse()
     {
-        _startTime = Time.time;
-
         if (_goodOrBad)
         {
             _particleDuration = particleGoodDuration;
@@ -74,13 +55,7 @@ public class EnemyScript : MonoBehaviour
 
     public void ParticleSystemStopped()
     {
-        _ghostDisappearing = false;
         _goodOrBad = false;
-        _startTime = 0f;
-
-        Color color = _material.color;
-        color.a = 1;
-        _material.color = color;
         poolingSystem.pool.Release(this);
     }
 }
