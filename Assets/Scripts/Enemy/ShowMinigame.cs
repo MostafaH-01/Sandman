@@ -98,4 +98,8 @@ public class ShowMinigame : MonoBehaviour
         yield return new WaitForSeconds(redFlashDuration);
         sliderCenterFillImage.color = Color.white;
     }
+    private void OnDisable()
+    {
+        converted = false;
+    }
 }

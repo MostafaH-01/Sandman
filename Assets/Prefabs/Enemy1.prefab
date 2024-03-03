@@ -363,7 +363,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1796,6 +1796,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
+--- !u!114 &4457519060057443829 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3849063992118750213, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
+  m_PrefabInstance: {fileID: 627925289828999664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4598835908208912474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3991471703944825258, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
@@ -2156,6 +2167,10 @@ PrefabInstance:
       propertyPath: canvasParent
       value: 
       objectReference: {fileID: 4598835908208912474}
+    - target: {fileID: 1978506778359573814, guid: 1cb4924899dde3843a73e3f833304fd1, type: 3}
+      propertyPath: sliderCenterFillImage
+      value: 
+      objectReference: {fileID: 4457519060057443829}
     - target: {fileID: 7739077588641142442, guid: 1cb4924899dde3843a73e3f833304fd1, type: 3}
       propertyPath: m_RootOrder
       value: 4

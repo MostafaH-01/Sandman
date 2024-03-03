@@ -24,11 +24,7 @@ public class PathMovement : MonoBehaviour
     }
     #endregion
 
-    private void OnEnable()
-    {
-        Debug.Log(wayPointIndex);
-    }
-
+    
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();

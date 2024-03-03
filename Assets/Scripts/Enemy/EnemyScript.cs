@@ -28,6 +28,9 @@ public class EnemyScript : MonoBehaviour
         _goodOrBad = true;
         badGhostRenderer.SetActive(false);
         goodGhostRenderer.SetActive(true);
+
+        audioSource.PlayOneShot(dream);
+        GhostArrived?.Invoke(true);
     }
     //private void OnEnable()
     //{
@@ -42,10 +45,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (_goodOrBad)
         {
-            audioSource.PlayOneShot(dream);
-
             particleSystemGoodGhost.Play();
-            GhostArrived?.Invoke(true);
         }
         else
         {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ManagingGame : MonoBehaviour
@@ -70,6 +71,8 @@ public class ManagingGame : MonoBehaviour
         UpdatePointsSlider();
 
         CheckIfPlayerWon(!_gameStarted);
+
+        Debug.Log("Current Points: " + _points);
     }
     private void CheckIfPlayerWon(bool gameEnded)
     {
@@ -92,6 +95,7 @@ public class ManagingGame : MonoBehaviour
     }
     private void EndGame()
     {
+        Time.timeScale = 0;
         _gameStarted = false;
         Spawning.SetActive(false);
         InputManager.SetActive(false);
@@ -99,6 +103,7 @@ public class ManagingGame : MonoBehaviour
 
     public void ResetGame()
     {
+        Time.timeScale = 1;
         _currentTime = gameDuration;
         _points = 0;
 
@@ -108,6 +113,11 @@ public class ManagingGame : MonoBehaviour
 
         UpdatePointsSlider();
         UpdateTimerDisplay();
+    }
+
+    public void BackToGame()
+    {
+        SceneManager.LoadScene("GameScene");
     }
     #endregion
     #region UI Methods

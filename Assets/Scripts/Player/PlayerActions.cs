@@ -76,8 +76,6 @@ public class PlayerActions : MonoBehaviour
                 //PlayerSucceeded?.Invoke();
             }
 
-            Debug.Log(success ? "You did it!" : "You didn't do it...");
-
             _showMinigame.StopConvertNightmare();
         }
     }
