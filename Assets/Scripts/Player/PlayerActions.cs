@@ -15,6 +15,7 @@ public class PlayerActions : MonoBehaviour
     private Vector3 _movement;
     private Rigidbody _rb;
     private ShowMinigame _showMinigame; // Script of enemy near player
+    private EnemyScript _enemyScript;
 
     public static event Action PlayerSucceeded;
     #endregion
@@ -71,7 +72,8 @@ public class PlayerActions : MonoBehaviour
             if (success)
             {
                 _showMinigame.ConvertGhost();
-                PlayerSucceeded?.Invoke();
+                _enemyScript.OnPlayerSuccess();
+                //PlayerSucceeded?.Invoke();
             }
 
             Debug.Log(success ? "You did it!" : "You didn't do it...");
@@ -83,6 +85,7 @@ public class PlayerActions : MonoBehaviour
     {
         if (other.tag == "Nightmare")
         {
+            _enemyScript = other.GetComponent<EnemyScript>();
             _showMinigame = other.GetComponent<ShowMinigame>();
             _showMinigame.ShowOrHidePopup();
         }
@@ -93,6 +96,7 @@ public class PlayerActions : MonoBehaviour
         {
             _showMinigame.StopConvertNightmare();
             _showMinigame.ShowOrHidePopup();
+            _enemyScript = null;
             _showMinigame = null; // Empty out enemy script reference
         }
     }

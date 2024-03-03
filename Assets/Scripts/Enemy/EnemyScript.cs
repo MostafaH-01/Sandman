@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    private AudioSource audioSource;
+    public AudioClip dream;
+    public AudioClip nightmare;
     public PoolingSystem poolingSystem;
     public ParticleSystem particleSystemGoodGhost;
     public ParticleSystem particleSystemBadGhost;
@@ -14,48 +17,50 @@ public class EnemyScript : MonoBehaviour
     public float particleBadDuration = 1f;
 
     public static event Action<bool> GhostArrived;
-
-    private float _particleDuration;
     private bool _goodOrBad = false; // true is good, bad is false
 
-    bool _ghostDisappearing = false;
-    private void OnPlayerSuccess() // Ghost converted
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+    public void OnPlayerSuccess() // Ghost converted
     {
         _goodOrBad = true;
         badGhostRenderer.SetActive(false);
         goodGhostRenderer.SetActive(true);
     }
-    private void OnEnable()
-    {
-        PlayerActions.PlayerSucceeded += OnPlayerSuccess;
-    }
-    private void OnDisable()
-    {
-        PlayerActions.PlayerSucceeded -= OnPlayerSuccess;
-    }
+    //private void OnEnable()
+    //{
+    //    PlayerActions.PlayerSucceeded += OnPlayerSuccess;
+    //}
+    //private void OnDisable()
+    //{
+    //    PlayerActions.PlayerSucceeded -= OnPlayerSuccess;
+    //}
 
     public void ReachedHouse()
     {
         if (_goodOrBad)
         {
-            _particleDuration = particleGoodDuration;
+            audioSource.PlayOneShot(dream);
 
             particleSystemGoodGhost.Play();
             GhostArrived?.Invoke(true);
         }
         else
         {
-            _particleDuration = particleBadDuration;
+            audioSource.PlayOneShot(nightmare);
 
             particleSystemBadGhost.Play();
             GhostArrived?.Invoke(false);
         }
-        _ghostDisappearing = true;
     }
 
     public void ParticleSystemStopped()
     {
         _goodOrBad = false;
+        goodGhostRenderer.SetActive(false);
+        badGhostRenderer.SetActive(true);
         poolingSystem.pool.Release(this);
     }
 }
