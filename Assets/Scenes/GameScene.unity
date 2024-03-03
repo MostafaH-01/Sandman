@@ -2788,7 +2788,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360705287}
-  m_LocalRotation: {x: -0.12238484, y: 0.8531488, z: -0.23138995, w: -0.45124033}
+  m_LocalRotation: {x: -0.12238483, y: 0.8531488, z: -0.23138995, w: -0.45124036}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4887,7 +4887,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619625568}
-  m_LocalRotation: {x: -0.05904137, y: 0.8797593, z: -0.11343636, w: -0.45789722}
+  m_LocalRotation: {x: -0.059040748, y: 0.8797619, z: -0.11343671, w: -0.45789233}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8290,6 +8290,10 @@ PrefabInstance:
       propertyPath: m_Lightmapping
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2703811009817636027, guid: 3f3fe03e033d43a49ba2cfb47082b18f, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3024255670176979763, guid: 3f3fe03e033d43a49ba2cfb47082b18f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -9045,9 +9049,17 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 4128796973204260288, guid: d800a4f4583b26248a0986838df623c6, type: 3}
+      propertyPath: m_ImportantGI
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4679530922421689376, guid: d800a4f4583b26248a0986838df623c6, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824870941674037617, guid: d800a4f4583b26248a0986838df623c6, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5389181263400194425, guid: d800a4f4583b26248a0986838df623c6, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -14213,7 +14225,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841358114}
-  m_LocalRotation: {x: -0.08191132, y: 0.8711955, z: -0.15569696, w: -0.45833114}
+  m_LocalRotation: {x: -0.08191102, y: 0.8711964, z: -0.15569709, w: -0.45832956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
