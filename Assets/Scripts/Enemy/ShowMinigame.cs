@@ -78,6 +78,7 @@ public class ShowMinigame : MonoBehaviour
     public void ConvertGhost()
     {
         converted = true;
+        canvasParent.SetActive(false);
     }
 
     private void ResetMiniGame()

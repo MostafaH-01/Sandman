@@ -1,18 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ManagingGame : MonoBehaviour
 {
+    #region Variables
     [Header("Objects To Turn On After Starting Game")]
     [SerializeField]
     private GameObject Spawning;
     [SerializeField]
     private GameObject InputManager;
+    [SerializeField]
+    private GameObject HUD;
 
     [Header("Objects To Turn Off After Starting Game")]
     [SerializeField]
     private GameObject mainMenuCamera;
+
+    [Header("UI Elements")]
+    [SerializeField]
+    private TextMeshProUGUI timerText;
+    [SerializeField]
+    private Slider pointSlider;
 
     [Header("Game Settings")]
     [SerializeField]
@@ -20,51 +32,93 @@ public class ManagingGame : MonoBehaviour
     [SerializeField]
     private int pointsToEndGame;
 
-    private int points = 0;
+    private int _points = 0;
+    private float _currentTime;
+    private bool _gameStarted = false;
+#endregion
 
-    public void GameStart()
+    private void Start()
     {
+        _currentTime = gameDuration;
 
-        StartCoroutine(GameTimer(gameDuration));
-        Spawning.SetActive(true);
-        InputManager.SetActive(true);
-        mainMenuCamera.SetActive(false);
+        // Set slider min and max value to points max
+        pointSlider.minValue = -pointsToEndGame;
+        pointSlider.maxValue = pointsToEndGame;
+
+        UpdatePointsSlider();
+        UpdateTimerDisplay();
     }
+    private void Update()
+    {
+        if (_gameStarted)
+        {
+            if (_currentTime <= 0)
+                CheckIfPlayerWon(!_gameStarted);
+            else
+                _currentTime -= Time.deltaTime;
+
+            UpdateTimerDisplay();
+        }
+    }
+    #region Utility Methods
 
     private void PointManagement(bool goodOrBad)
     {
-        points += goodOrBad ? 1 : -1; // Adds or subtracts points depending on whether ghost/nightmare entered a house
+        _points += goodOrBad ? 1 : -1; // Adds or subtracts points depending on whether ghost/nightmare entered a house
 
-        if (points >= pointsToEndGame)
+        UpdatePointsSlider();
+
+        CheckIfPlayerWon(!_gameStarted);
+    }
+    private void CheckIfPlayerWon(bool gameEnded)
+    {
+        if ((!gameEnded && _points >= pointsToEndGame) || (gameEnded && _points >= 0))
         {
             // Won game
-            GameEnd();
+            EndGame();
             Debug.Log("You won!");
         }
-        else if (points <= -pointsToEndGame)
+        else if ((!gameEnded && _points <= -pointsToEndGame) || (gameEnded && _points < 0))
         {
             // Lost game
-            GameEnd();
+            EndGame();
             Debug.Log("You lost womp womp");
         }
     }
+    private void EndGame()
+    {
+        _gameStarted = false;
+        Spawning.SetActive(false);
+        InputManager.SetActive(false);
+    }
+    #endregion
+    #region UI Methods
 
+    public void GameStart()
+    {
+        _gameStarted = true;
+
+        Spawning.SetActive(true);
+        InputManager.SetActive(true);
+        mainMenuCamera.SetActive(false);
+        HUD.SetActive(true);
+    }
     public void QuitGame()
     {
         Application.Quit();
     }
-
-    private void GameEnd()
+    private void UpdateTimerDisplay()
     {
-        Spawning.SetActive(false);
-        InputManager.SetActive(false);
+        var ts = TimeSpan.FromSeconds(_currentTime);
+        timerText.text = string.Format("{0:00}:{1:00}", ts.Minutes, ts.Seconds);
     }
-
-    IEnumerator GameTimer(float duration)
+    private void UpdatePointsSlider()
     {
-        yield return new WaitForSeconds(duration);
-        GameEnd();
+        pointSlider.value = _points;
     }
+    #endregion
+
+    #region Subscribing To Events
     private void OnEnable()
     {
         EnemyScript.GhostArrived += PointManagement;
@@ -73,4 +127,5 @@ public class ManagingGame : MonoBehaviour
     {
         EnemyScript.GhostArrived -= PointManagement;
     }
+    #endregion
 }
