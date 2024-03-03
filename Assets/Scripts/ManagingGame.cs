@@ -95,6 +95,7 @@ public class ManagingGame : MonoBehaviour
     }
     private void EndGame()
     {
+        Cursor.visible = true;
         Time.timeScale = 0;
         _gameStarted = false;
         Spawning.SetActive(false);
@@ -103,6 +104,7 @@ public class ManagingGame : MonoBehaviour
 
     public void ResetGame()
     {
+        Cursor.visible = true;
         Time.timeScale = 1;
         _currentTime = gameDuration;
         _points = 0;
@@ -117,6 +119,7 @@ public class ManagingGame : MonoBehaviour
 
     public void BackToGame()
     {
+        Cursor.visible = true;
         SceneManager.LoadScene("GameScene");
     }
     #endregion
@@ -124,6 +127,7 @@ public class ManagingGame : MonoBehaviour
 
     public void GameStart()
     {
+        Cursor.visible = false;
         _gameStarted = true;
 
         Spawning.SetActive(true);
@@ -148,6 +152,7 @@ public class ManagingGame : MonoBehaviour
     {
         HUD.SetActive(!HUD.activeSelf);
         pauseMenu.SetActive(!pauseMenu.activeSelf);
+        Cursor.visible = pauseMenu.activeSelf;
         Time.timeScale = Time.timeScale == 1 ? 0 : 1;
     }
     #endregion
