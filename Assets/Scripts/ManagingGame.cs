@@ -34,6 +34,8 @@ public class ManagingGame : MonoBehaviour
     private GameObject loseMenu;
     [SerializeField]
     private GameObject endScreen;
+    [SerializeField]
+    private GameObject mobileControls;
 
     [Header("Game Settings")]
     [SerializeField]
@@ -92,6 +94,11 @@ public class ManagingGame : MonoBehaviour
     private void Start()
     {
         ResetGame();
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            mobileControls.SetActive(true);
+        }
     }
     private void Update()
     {
