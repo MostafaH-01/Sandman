@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.25156304, g: 0.25882354, b: 0.21176471, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 8
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 2d056ac30ecc9e542b26e06133f23602, type: 2}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 1116523029}
-  m_IndirectSpecularColor: {r: 0.0014785795, g: 0.0013591028, b: 0.0012890887, a: 1}
+  m_Sun: {fileID: 994817549}
+  m_IndirectSpecularColor: {r: 0.000017063927, g: 0.000000025858922, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -483,7 +483,15 @@ PrefabInstance:
       value: Desert_Village_House_Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
       propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5074,6 +5082,63 @@ Transform:
   m_Father: {fileID: 1496873868}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &647692423
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 127072, guid: a827bb426f045b94e9c9df2b01ced5de, type: 3}
+      propertyPath: m_Name
+      value: Lighting Fixer
+      objectReference: {fileID: 0}
+    - target: {fileID: 497706, guid: a827bb426f045b94e9c9df2b01ced5de, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 497706, guid: a827bb426f045b94e9c9df2b01ced5de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497706, guid: a827bb426f045b94e9c9df2b01ced5de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497706, guid: a827bb426f045b94e9c9df2b01ced5de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497706, guid: a827bb426f045b94e9c9df2b01ced5de, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 497706, guid: a827bb426f045b94e9c9df2b01ced5de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497706, guid: a827bb426f045b94e9c9df2b01ced5de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497706, guid: a827bb426f045b94e9c9df2b01ced5de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497706, guid: a827bb426f045b94e9c9df2b01ced5de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497706, guid: a827bb426f045b94e9c9df2b01ced5de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497706, guid: a827bb426f045b94e9c9df2b01ced5de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a827bb426f045b94e9c9df2b01ced5de, type: 3}
 --- !u!1 &652971895
 GameObject:
   m_ObjectHideFlags: 0
@@ -6172,7 +6237,15 @@ PrefabInstance:
       value: Desert_Village_House_Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
       propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6918,6 +6991,139 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4840052140215516641, guid: b7d5a31e2b3908746b39720151582136, type: 3}
   m_PrefabInstance: {fileID: 800318567}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &816555447
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 174068, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_Name
+      value: Day and Night Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 418238, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 418238, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 418238, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 456198, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 456198, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456198, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456198, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456198, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 456198, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456198, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456198, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456198, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456198, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456198, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465148, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.71894974
+      objectReference: {fileID: 0}
+    - target: {fileID: 465148, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6450767
+      objectReference: {fileID: 0}
+    - target: {fileID: 465148, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.19264197
+      objectReference: {fileID: 0}
+    - target: {fileID: 465148, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.17284776
+      objectReference: {fileID: 0}
+    - target: {fileID: 465148, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 276.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 10851780, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 10851780, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.95686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 10851780, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10851780, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_Intensity
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 10851780, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_ShadowAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 10851780, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: showUI
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: StartDay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: currentTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: directionalLight
+      value: 
+      objectReference: {fileID: 994817549}
+    - target: {fileID: 11431738, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+      propertyPath: SecondsInAFullDay
+      value: 360
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
 --- !u!1001 &826273065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7274,13 +7480,13 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 90
+  m_Intensity: 72.71
   m_Range: 25
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -7857,7 +8063,15 @@ PrefabInstance:
       value: Desert_Village_House_Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
       propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8100,6 +8314,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8241013910951152780, guid: 07b9db8a4c5b12449b9ee8e9fbccd558, type: 3}
   m_PrefabInstance: {fileID: 976368489}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &994817548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 190586, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+  m_PrefabInstance: {fileID: 816555447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &994817549 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 10851780, guid: 1dce2846dc915b44ea1a12401fe517e1, type: 3}
+  m_PrefabInstance: {fileID: 816555447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &994817550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994817548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1001 &996585483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9058,7 +9302,15 @@ PrefabInstance:
       value: Desert_Village_House_Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
       propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -9626,7 +9878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1116523029
 Light:
   m_ObjectHideFlags: 0
@@ -9784,7 +10036,15 @@ PrefabInstance:
       value: Desert_Village_House_Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
       propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10127,7 +10387,15 @@ PrefabInstance:
       value: Desert_Village_House_Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
       propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
@@ -10413,7 +10681,19 @@ PrefabInstance:
       value: Desert_Village_House_Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
       propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_ShadowRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11301,7 +11581,15 @@ PrefabInstance:
       value: 7.12
       objectReference: {fileID: 0}
     - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
       propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -12436,7 +12724,15 @@ PrefabInstance:
       value: Desert_Village_House_Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
       propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -13651,7 +13947,15 @@ PrefabInstance:
       value: Desert_Village_House_Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
       propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
@@ -15885,7 +16189,15 @@ PrefabInstance:
       value: Desert_Village_House_Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
       propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717475591182326826, guid: 0f2e7b5cff628ea42ac22c632b2d19e5, type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -16471,6 +16783,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1269080856, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269080856, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269080856, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269080856, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1533495736, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -16513,6 +16841,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 614473887130614100, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439514006940259844, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439514006940259844, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439514006940259844, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439514006940259844, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532404428828918271, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532404428828918271, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532404428828918271, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532404428828918271, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2593438276070711457, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
@@ -16682,6 +17042,38 @@ PrefabInstance:
     - target: {fileID: 2593438277378302990, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051792936039273845, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051792936039273845, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051792936039273845, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051792936039273845, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479207185039848087, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479207185039848087, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479207185039848087, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479207185039848087, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6654945427477940316, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
       propertyPath: m_IsActive
