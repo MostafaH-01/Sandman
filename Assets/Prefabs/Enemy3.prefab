@@ -1611,18 +1611,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2676405798547930091}
     m_Modifications:
-    - target: {fileID: 3390657359857225630, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3390657359857225630, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3390657359857225630, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3991471703944825258, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
       propertyPath: m_Name
       value: Canvas Parent
@@ -1701,6 +1689,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &5384303607326744769 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6661553587002536432, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
+  m_PrefabInstance: {fileID: 1642252745921745201}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5392082259454089994 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6638009072704621115, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
@@ -2226,6 +2219,10 @@ PrefabInstance:
       propertyPath: canvasParent
       value: 
       objectReference: {fileID: 2427152634259757211}
+    - target: {fileID: 1978506778359573814, guid: 1cb4924899dde3843a73e3f833304fd1, type: 3}
+      propertyPath: purpleImageTransform
+      value: 
+      objectReference: {fileID: 5384303607326744769}
     - target: {fileID: 1978506778359573814, guid: 1cb4924899dde3843a73e3f833304fd1, type: 3}
       propertyPath: sliderCenterFillImage
       value: 

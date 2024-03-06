@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
-    private AudioSource audioSource;
     public AudioClip dream;
     public AudioClip nightmare;
     public PoolingSystem poolingSystem;
@@ -16,12 +16,18 @@ public class EnemyScript : MonoBehaviour
     public float particleGoodDuration = 5f;
     public float particleBadDuration = 1f;
 
+    private AudioSource audioSource;
+    private NavMeshAgent navMeshAgent;
+
     public static event Action<bool> GhostArrived;
     private bool _goodOrBad = false; // true is good, bad is false
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
+        navMeshAgent.speed = ManagingGame.Instance.GetEnemySettings()[5]; // Setting enemy speed as it is in game manager
     }
     public void OnPlayerSuccess() // Ghost converted
     {
@@ -32,14 +38,6 @@ public class EnemyScript : MonoBehaviour
         audioSource.PlayOneShot(dream);
         GhostArrived?.Invoke(true);
     }
-    //private void OnEnable()
-    //{
-    //    PlayerActions.PlayerSucceeded += OnPlayerSuccess;
-    //}
-    //private void OnDisable()
-    //{
-    //    PlayerActions.PlayerSucceeded -= OnPlayerSuccess;
-    //}
 
     public void ReachedHouse()
     {

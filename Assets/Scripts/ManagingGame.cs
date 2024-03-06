@@ -41,11 +41,54 @@ public class ManagingGame : MonoBehaviour
     [SerializeField]
     private int pointsToEndGame;
 
+    [Header("Enemy Settings")]
+    [SerializeField]
+    private float enemySpeed = 2f;
+    [SerializeField]
+    private float sliderIncrement = 0.02f;
+    [SerializeField]
+    private float minWidth = 0.08f;
+    [SerializeField]
+    private float maxWidth = 0.17f;
+    [SerializeField]
+    private float maxPurplePos = 0.57f;
+    [SerializeField]
+    private float redFlashDuration = 0.2f;
+
     private int _points = 0;
     private float _currentTime;
     private bool _gameStarted = false;
-#endregion
+    #endregion
 
+    #region Singleton Setup
+    // To setup Singleton
+    private static ManagingGame instance;
+    public static ManagingGame Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                SetupInstance();
+            }
+
+            return instance;
+        }
+    }
+    #endregion
+    #region Method to Create Singleton Instance
+    private static void SetupInstance()
+    {
+        instance = FindObjectOfType<ManagingGame>();
+
+        if (instance == null)
+        {
+            GameObject gameObj = new GameObject();
+            gameObj.name = "GameManager";
+            instance = gameObj.AddComponent<ManagingGame>();
+        }
+    }
+    #endregion
     private void Start()
     {
         ResetGame();
@@ -121,6 +164,17 @@ public class ManagingGame : MonoBehaviour
     {
         Cursor.visible = true;
         SceneManager.LoadScene("GameScene");
+    }
+    public List<float> GetEnemySettings()
+    {
+        List<float> settings = new List<float>();
+        settings.Add(sliderIncrement);
+        settings.Add(minWidth);
+        settings.Add(maxWidth);
+        settings.Add(maxPurplePos);
+        settings.Add(redFlashDuration);
+        settings.Add(enemySpeed);
+        return settings;
     }
     #endregion
     #region UI Methods
