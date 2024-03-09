@@ -60,9 +60,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasParent: {fileID: 6903524784725561680}
   slider: {fileID: 6903524785953981197}
+  sliderCenterFillImage: {fileID: 0}
+  purpleImageTransform: {fileID: 0}
   sliderIncrement: 0.01
-  lowerBoundSliderWin: 0.6
-  upperBoundSliderWin: 0.75
+  minWidth: 0.08
+  maxWidth: 0.17
+  maxPurplePos: 0.57
+  redFlashDuration: 0.2
 --- !u!1 &6903524784358227477
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,7 +866,6 @@ GameObject:
   - component: {fileID: 6903524786058115563}
   - component: {fileID: 6903524786058115562}
   - component: {fileID: 5427018556399541697}
-  - component: {fileID: 7796820133258968024}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -972,18 +975,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7796820133258968024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6903524786058115561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd7bdd9fcfacbda4e895eb325ebb94fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6903524786124986655
 GameObject:
   m_ObjectHideFlags: 0

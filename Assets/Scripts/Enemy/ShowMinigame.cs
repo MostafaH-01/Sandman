@@ -109,10 +109,8 @@ public class ShowMinigame : MonoBehaviour
     {
         purpleImageWidth = UnityEngine.Random.Range(minWidth, maxWidth);
         purpleImagePos = UnityEngine.Random.Range(-maxPurplePos, maxPurplePos);
-        Debug.Log("Position random: " + purpleImagePos);
 
         purpleImageTransform.anchoredPosition = new Vector2(purpleImagePos, purpleImageTransform.anchoredPosition.y);
-        Debug.Log("Anchored Pos: " + purpleImageTransform.anchoredPosition);
         purpleImageTransform.sizeDelta = new Vector2 (purpleImageWidth, purpleImageTransform.sizeDelta.y);
 
         lowerBoundSliderWin = purpleImagePos - purpleImageWidth / 2;
