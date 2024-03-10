@@ -517,8 +517,8 @@ GameObject:
   - component: {fileID: 2676405798547930094}
   - component: {fileID: 8869114565614951359}
   - component: {fileID: 8982584917064413147}
-  - component: {fileID: 6063071365957456518}
   - component: {fileID: 1742603537344441033}
+  - component: {fileID: 8236388333409307382}
   m_Layer: 0
   m_Name: Enemy3
   m_TagString: Untagged
@@ -633,7 +633,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 2
-  m_Acceleration: 8
+  m_Acceleration: 3
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -644,18 +644,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6063071365957456518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2676405798547930095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd7bdd9fcfacbda4e895eb325ebb94fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1742603537344441033
 AudioSource:
   m_ObjectHideFlags: 0
@@ -752,6 +740,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8236388333409307382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676405798547930095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7bdd9fcfacbda4e895eb325ebb94fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3732073043415814017
 GameObject:
   m_ObjectHideFlags: 0

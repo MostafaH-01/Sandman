@@ -258,7 +258,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8241013910951152780}
-  - component: {fileID: 3715632816779479976}
   - component: {fileID: 371109431}
   m_Layer: 0
   m_Name: Desert_Village_Threshold_Rock
@@ -285,19 +284,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!65 &3715632816779479976
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8725204009951663670}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.158549, y: 1.4041538, z: 1.5762514}
-  m_Center: {x: -4.126437, y: 0.62839496, z: -12.901728}
 --- !u!54 &371109431
 Rigidbody:
   m_ObjectHideFlags: 0

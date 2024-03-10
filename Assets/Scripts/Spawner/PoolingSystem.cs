@@ -10,8 +10,7 @@ public class PoolingSystem : MonoBehaviour
     #region Variables
     public ObjectPool<EnemyScript> pool;
     [SerializeField] private EnemyScript pooledObject;
-    [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private PathsStorage pathsStorage;
+    [SerializeField] private GameObject[] spawnPoints;
     #endregion
 
     #region Awake
@@ -24,16 +23,18 @@ public class PoolingSystem : MonoBehaviour
     #region Pool Methods
     private EnemyScript CreateObject()
     {
-        EnemyScript spawnedObject = Instantiate(pooledObject, RandomPosition(), Quaternion.identity);
+        GameObject spawnPoint = RandomSpawnPoint();
+        EnemyScript spawnedObject = Instantiate(pooledObject, spawnPoint.transform.position, Quaternion.identity);
         spawnedObject.poolingSystem = this;
         return spawnedObject;
     }
 
     private void ActivateObject(EnemyScript pooledObject)
     {
-        pooledObject.transform.position = RandomPosition();
+        GameObject spawnPoint = RandomSpawnPoint();
+        pooledObject.transform.position = spawnPoint.transform.position;
+        pooledObject.gameObject.GetComponent<PathMovement>().CurrentNode = AssignNode(spawnPoint);
         pooledObject.gameObject.SetActive(true);
-        AssignPath(pooledObject);
     }
 
     private void DeactivateObject(EnemyScript pooledObject)
@@ -47,19 +48,17 @@ public class PoolingSystem : MonoBehaviour
     }
     #endregion
 
-    #region Randomization and Path Assignment
-    private Vector3 RandomPosition()
+    #region Randomization and Node Assignment
+    private GameObject RandomSpawnPoint()
     {
         int randomNumber = UnityEngine.Random.Range(0, spawnPoints.Length);
-        return spawnPoints[randomNumber].position;
+        return spawnPoints[randomNumber];
     }
 
-    private void AssignPath(EnemyScript spawnedObject)
+    private Node AssignNode(GameObject spawnPoint)
     {
-        int randomPath = UnityEngine.Random.Range(0, pathsStorage.paths.Length);
-        PathMovement enemyPathScript = spawnedObject.GetComponent<PathMovement>();
-        enemyPathScript.Path = pathsStorage.paths[randomPath];
-        enemyPathScript.SetAgentDestination();
+        Node node = spawnPoint.GetComponent<Node>();
+        return node.StoredNodes[0];
     }
     #endregion
 }

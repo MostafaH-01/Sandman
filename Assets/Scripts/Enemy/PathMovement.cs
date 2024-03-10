@@ -6,25 +6,19 @@ using UnityEngine.AI;
 public class PathMovement : MonoBehaviour
 {
     #region Variables
-    private Path path;
-    private NavMeshAgent agent;
-    private int wayPointIndex;
-    private bool reachedHouse;
+    private Node destinationNode;
+    private Node travelledNode;
 
-    public Path Path
+    public Node CurrentNode
     {
-        get
-        {
-            return path;
-        }
-        set
-        {
-            path = value;
-        }
+        get { return destinationNode;}
+        set { destinationNode = value; }
     }
+
+    private NavMeshAgent agent;
     #endregion
 
-    
+    #region Awake Start and Update
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -32,46 +26,64 @@ public class PathMovement : MonoBehaviour
 
     private void Start()
     {
-        wayPointIndex = 0;
-        reachedHouse = false;
+        agent.destination = destinationNode.transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Walk();
     }
+    #endregion
 
+    #region Moving and Assigning Nodes
     private void Walk()
     {
-        float distanceToNode = Vector3.Distance(path.PathNodes[wayPointIndex].transform.position, transform.position);
-
-        if(distanceToNode <= 1)
+        if (destinationNode != null)
         {
-            if (wayPointIndex == path.PathNodes.Length - 1) 
+            float distanceToNode = Vector3.Distance(destinationNode.transform.position, transform.position);
+
+            if (distanceToNode <= 1)
             {
-                if(!reachedHouse)
+                if (destinationNode.gameObject.CompareTag("PathEnd"))
                 {
-                    GetComponent<EnemyScript>().ReachedHouse();
-                    reachedHouse = true;
+                    PathEnd endScript = CurrentNode.gameObject.GetComponent<PathEnd>();
+                    int possiblity = Random.Range(1, 101);
+
+                    if (possiblity <= endScript.EndPossibility)
+                    {
+                        endScript.DecreasePossibility();
+                        CurrentNode = null;
+                        gameObject.GetComponent<EnemyScript>().ReachedHouse();
+                    }
+                    else
+                    {
+                        AssignNewNode();
+                    }
                 }
-            }
-            else
-            {
-                wayPointIndex++;
-                agent.SetDestination(path.PathNodes[wayPointIndex].transform.position);
+                else
+                {
+                    AssignNewNode();
+                }
+
             }
         }
     }
 
-    public void SetAgentDestination()
+    private void AssignNewNode()
     {
-        agent.SetDestination(path.PathNodes[wayPointIndex].transform.position);
-    }
+        List<Node> storedNodes = destinationNode.StoredNodes;
+        int randomNumber = Random.Range(0, storedNodes.Count);
 
-    private void OnDisable()
-    {
-        wayPointIndex = 0;
-        reachedHouse= false;
+        if (storedNodes[randomNumber] == travelledNode)
+        {
+            AssignNewNode();
+        }
+        else
+        {
+            travelledNode = destinationNode;
+            destinationNode = storedNodes[randomNumber];
+            agent.destination = destinationNode.transform.position;
+        }
     }
+    #endregion
 }

@@ -121,8 +121,6 @@ public class ManagingGame : MonoBehaviour
         UpdatePointsSlider();
 
         CheckIfPlayerWon(!_gameStarted);
-
-        Debug.Log("Current Points: " + _points);
     }
     private void CheckIfPlayerWon(bool gameEnded)
     {
