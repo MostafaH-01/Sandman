@@ -25,6 +25,8 @@ public class ManagingGame : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI timerText;
     [SerializeField]
+    private TextMeshProUGUI defeatedCount;
+    [SerializeField]
     private Slider pointSlider;
     [SerializeField]
     private GameObject pauseMenu;
@@ -58,6 +60,7 @@ public class ManagingGame : MonoBehaviour
     private float redFlashDuration = 0.2f;
 
     private int _points = 0;
+    private int enemiesDefeated = 0;
     private float _currentTime;
     private bool _gameStarted = false;
     #endregion
@@ -207,6 +210,11 @@ public class ManagingGame : MonoBehaviour
     {
         pointSlider.value = _points;
     }
+    private void IncrementDefeated()
+    {
+        enemiesDefeated++;
+        defeatedCount.text = defeatedCount.ToString();
+    }
     public void PauseMenu()
     {
         HUD.SetActive(!HUD.activeSelf);
@@ -220,11 +228,13 @@ public class ManagingGame : MonoBehaviour
     private void OnEnable()
     {
         EnemyScript.GhostArrived += PointManagement;
+        EnemyScript.EnemyDefeated += IncrementDefeated;
         InputScript.pauseMenuTriggered += PauseMenu;
     }
     private void OnDisable()
     {
         EnemyScript.GhostArrived -= PointManagement;
+        EnemyScript.EnemyDefeated -= IncrementDefeated;
         InputScript.pauseMenuTriggered -= PauseMenu;
     }
     #endregion

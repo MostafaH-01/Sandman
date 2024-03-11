@@ -9,7 +9,7 @@ public class PathMovement : MonoBehaviour
     private Node destinationNode;
     private Node travelledNode;
 
-    public Node CurrentNode
+    public Node DestinationNode
     {
         get { return destinationNode;}
         set { destinationNode = value; }
@@ -22,11 +22,6 @@ public class PathMovement : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-    }
-
-    private void Start()
-    {
-        agent.destination = destinationNode.transform.position;
     }
 
     void Update()
@@ -46,13 +41,13 @@ public class PathMovement : MonoBehaviour
             {
                 if (destinationNode.gameObject.CompareTag("PathEnd"))
                 {
-                    PathEnd endScript = CurrentNode.gameObject.GetComponent<PathEnd>();
+                    PathEnd endScript = destinationNode.gameObject.GetComponent<PathEnd>();
                     int possiblity = Random.Range(1, 101);
 
                     if (possiblity <= endScript.EndPossibility)
                     {
                         endScript.DecreasePossibility();
-                        CurrentNode = null;
+                        destinationNode = null;
                         gameObject.GetComponent<EnemyScript>().ReachedHouse();
                     }
                     else
@@ -69,7 +64,7 @@ public class PathMovement : MonoBehaviour
         }
     }
 
-    private void AssignNewNode()
+    public void AssignNewNode()
     {
         List<Node> storedNodes = destinationNode.StoredNodes;
         int randomNumber = Random.Range(0, storedNodes.Count);

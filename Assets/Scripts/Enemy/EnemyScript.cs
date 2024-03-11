@@ -20,6 +20,7 @@ public class EnemyScript : MonoBehaviour
     private NavMeshAgent navMeshAgent;
 
     public static event Action<bool> GhostArrived;
+    public static event Action EnemyDefeated;
     private bool _goodOrBad = false; // true is good, bad is false
 
     private void Start()
@@ -37,6 +38,7 @@ public class EnemyScript : MonoBehaviour
 
         audioSource.PlayOneShot(dream);
         GhostArrived?.Invoke(true);
+        EnemyDefeated?.Invoke();
     }
 
     public void ReachedHouse()

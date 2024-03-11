@@ -33,8 +33,9 @@ public class PoolingSystem : MonoBehaviour
     {
         GameObject spawnPoint = RandomSpawnPoint();
         pooledObject.transform.position = spawnPoint.transform.position;
-        pooledObject.gameObject.GetComponent<PathMovement>().CurrentNode = AssignNode(spawnPoint);
+        pooledObject.gameObject.GetComponent<PathMovement>().DestinationNode = AssignNode(spawnPoint);
         pooledObject.gameObject.SetActive(true);
+        pooledObject.gameObject.GetComponent<PathMovement>().AssignNewNode();
     }
 
     private void DeactivateObject(EnemyScript pooledObject)

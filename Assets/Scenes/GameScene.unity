@@ -3060,6 +3060,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 87036449670035422, guid: 3484173256376a745ac069c5dae01bc8, type: 3}
   m_PrefabInstance: {fileID: 121010580}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &127052669 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1357543662874928177, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+  m_PrefabInstance: {fileID: 2593438275897457659}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &139413919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6779,8 +6790,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360705287}
-  m_LocalRotation: {x: -0.10520906, y: 0.8612995, z: -0.19891636, w: -0.45555088}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.17082635, y: 0.82285494, z: -0.32297784, w: -0.43521655}
+  m_LocalPosition: {x: 0, y: -0.00000023841858, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11704,8 +11715,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619625568}
-  m_LocalRotation: {x: -0.041658666, y: 0.8834261, z: -0.08003982, w: -0.45980054}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.10858525, y: 0.86216086, z: -0.20862648, w: -0.44873476}
+  m_LocalPosition: {x: 0, y: -0.00000023841858, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30223,7 +30234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496873865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.70793, y: 2.127, z: -22.269972}
+  m_LocalPosition: {x: -33.340626, y: 3.238557, z: -22.700758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33055,6 +33066,7 @@ MonoBehaviour:
   HUD: {fileID: 17135761}
   mainMenuCamera: {fileID: 603553970}
   timerText: {fileID: 1269080858}
+  defeatedCount: {fileID: 127052669}
   pointSlider: {fileID: 2593438275897457660}
   pauseMenu: {fileID: 1237461455}
   winMenu: {fileID: 885172475}
@@ -36757,8 +36769,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841358114}
-  m_LocalRotation: {x: -0.0644959, y: 0.8764675, z: -0.12259432, w: -0.46110266}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.13136643, y: 0.84904253, z: -0.24970214, w: -0.4466749}
+  m_LocalPosition: {x: 0, y: -0.00000023841858, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
