@@ -2227,6 +2227,10 @@ PrefabInstance:
       propertyPath: sliderCenterFillImage
       value: 
       objectReference: {fileID: 2567310608234937652}
+    - target: {fileID: 4492075619128803415, guid: 1cb4924899dde3843a73e3f833304fd1, type: 3}
+      propertyPath: m_Radius
+      value: 1.35
+      objectReference: {fileID: 0}
     - target: {fileID: 7739077588641142442, guid: 1cb4924899dde3843a73e3f833304fd1, type: 3}
       propertyPath: m_RootOrder
       value: 4
