@@ -6779,8 +6779,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360705287}
-  m_LocalRotation: {x: -0.25648564, y: 0.73908466, z: -0.48493126, w: -0.39091024}
-  m_LocalPosition: {x: 0, y: 0.00000047683716, z: 0}
+  m_LocalRotation: {x: -0.10520906, y: 0.8612995, z: -0.19891636, w: -0.45555088}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11704,8 +11704,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619625568}
-  m_LocalRotation: {x: -0.041658655, y: 0.88342613, z: -0.08003976, w: -0.45980054}
-  m_LocalPosition: {x: 1.9362602, y: -2.1218646, z: 1.318367}
+  m_LocalRotation: {x: -0.041658666, y: 0.8834261, z: -0.08003982, w: -0.45980054}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30223,7 +30223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496873865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.64419, y: 4.2488647, z: -23.588339}
+  m_LocalPosition: {x: -32.70793, y: 2.127, z: -22.269972}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36757,8 +36757,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841358114}
-  m_LocalRotation: {x: -0.22021566, y: 0.77974933, z: -0.4185875, w: -0.41022012}
-  m_LocalPosition: {x: 0, y: 0.00000047683716, z: 0}
+  m_LocalRotation: {x: -0.0644959, y: 0.8764675, z: -0.12259432, w: -0.46110266}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43429,6 +43429,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 845260277, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 885172475, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1207489740, guid: 53e4beba6bd7f1e47bfa28ab1977b3f5, type: 3}
       propertyPath: m_IsActive
       value: 0
