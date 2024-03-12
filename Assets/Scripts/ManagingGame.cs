@@ -16,6 +16,8 @@ public class ManagingGame : MonoBehaviour
     private GameObject InputManager;
     [SerializeField]
     private GameObject HUD;
+    [SerializeField]
+    private GameObject DayNightCycle;
 
     [Header("Objects To Turn Off After Starting Game")]
     [SerializeField]
@@ -196,6 +198,7 @@ public class ManagingGame : MonoBehaviour
         InputManager.SetActive(true);
         mainMenuCamera.SetActive(false);
         HUD.SetActive(true);
+        DayNightCycle.SetActive(true);
     }
     public void QuitGame()
     {
@@ -213,7 +216,7 @@ public class ManagingGame : MonoBehaviour
     private void IncrementDefeated()
     {
         enemiesDefeated++;
-        defeatedCount.text = defeatedCount.ToString();
+        defeatedCount.text = enemiesDefeated.ToString();
     }
     public void PauseMenu()
     {

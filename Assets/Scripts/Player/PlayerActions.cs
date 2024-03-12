@@ -81,6 +81,7 @@ public class PlayerActions : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Trigger collission with " + other.tag);
         if (other.tag == "Nightmare")
         {
             _enemyScript = other.transform.parent.GetComponent<EnemyScript>();
@@ -90,6 +91,7 @@ public class PlayerActions : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("Trigger exit with " + other.tag);
         if (other.tag == "Nightmare")
         {
             _showMinigame.StopConvertNightmare();

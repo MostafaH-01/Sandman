@@ -142,6 +142,7 @@ public class ShowMinigame : MonoBehaviour
     private void OnDisable()
     {
         RandomizePurpleCenter();
+        canvasParent.SetActive(false);
         converted = false;
     }
 }
