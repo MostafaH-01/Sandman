@@ -84,19 +84,22 @@ public class ShowMinigame : MonoBehaviour
     }
 
     // When player enters or exits trigger area
-    public void ShowOrHidePopup()
+    public void ShowOrHidePopup(bool show)
     {
         if (!converted)
         {
             ResetMiniGame();
-            canvasParent.SetActive(!canvasParent.activeSelf);
+            canvasParent.SetActive(show);
         }
     }
     // Make a ghost good
     public void ConvertGhost()
     {
         converted = true;
+        gameObject.tag = "Ghost";
         canvasParent.SetActive(false);
+
+        StopConvertNightmare();
     }
 
     private void ResetMiniGame()
@@ -144,5 +147,6 @@ public class ShowMinigame : MonoBehaviour
         RandomizePurpleCenter();
         canvasParent.SetActive(false);
         converted = false;
+        gameObject.tag = "Nightmare";
     }
 }

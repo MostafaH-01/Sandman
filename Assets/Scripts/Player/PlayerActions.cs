@@ -73,29 +73,36 @@ public class PlayerActions : MonoBehaviour
             {
                 _showMinigame.ConvertGhost();
                 _enemyScript.OnPlayerSuccess();
-                //PlayerSucceeded?.Invoke();
+
+                inputScript.UnsubscribeFromConvert();
+
+                _enemyScript = null;
+                _showMinigame = null; // Empty out enemy script reference
             }
 
-            _showMinigame.StopConvertNightmare();
+            else
+                _showMinigame.StopConvertNightmare();
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger collission with " + other.tag);
         if (other.tag == "Nightmare")
         {
+            inputScript.SubscribeToConvert();
+
             _enemyScript = other.transform.parent.GetComponent<EnemyScript>();
             _showMinigame = other.GetComponent<ShowMinigame>();
-            _showMinigame.ShowOrHidePopup();
+            _showMinigame.ShowOrHidePopup(true);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Trigger exit with " + other.tag);
         if (other.tag == "Nightmare")
         {
+            inputScript.UnsubscribeFromConvert();
+
             _showMinigame.StopConvertNightmare();
-            _showMinigame.ShowOrHidePopup();
+            _showMinigame.ShowOrHidePopup(false);
             _enemyScript = null;
             _showMinigame = null; // Empty out enemy script reference
         }

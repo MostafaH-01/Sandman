@@ -110,7 +110,7 @@ public class ManagingGame : MonoBehaviour
         if (_gameStarted)
         {
             if (_currentTime <= 0)
-                CheckIfPlayerWon(!_gameStarted);
+                CheckIfPlayerWon(true);
             else
                 _currentTime -= Time.deltaTime;
 
@@ -135,7 +135,6 @@ public class ManagingGame : MonoBehaviour
             EndGame();
             endScreen.SetActive(true);
             winMenu.SetActive(true);
-            Debug.Log("You won!");
         }
         else if ((!gameEnded && _points <= -pointsToEndGame) || (gameEnded && _points < 0))
         {
@@ -143,7 +142,6 @@ public class ManagingGame : MonoBehaviour
             EndGame();
             endScreen.SetActive(true);
             loseMenu.SetActive(true);
-            Debug.Log("You lost womp womp");
         }
     }
     private void EndGame()
@@ -151,6 +149,7 @@ public class ManagingGame : MonoBehaviour
         Cursor.visible = true;
         Time.timeScale = 0;
         _gameStarted = false;
+        HUD.SetActive(false);
         Spawning.SetActive(false);
         InputManager.SetActive(false);
     }

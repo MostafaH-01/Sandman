@@ -70,19 +70,23 @@ public class InputScript : MonoBehaviour
     #region Event Subscribing
     private void OnEnable()
     {
-        convert.action.started += convertBtnHeld;
-        convert.action.performed += convertTrigger;
-        convert.action.canceled += convertTrigger;
-
         pause.action.performed += pauseTrigger;
     }
     private void OnDisable()
     {
+        pause.action.performed -= pauseTrigger;
+    }
+    public void SubscribeToConvert()
+    {
+        convert.action.started += convertBtnHeld;
+        convert.action.performed += convertTrigger;
+        convert.action.canceled += convertTrigger;
+    }
+    public void UnsubscribeFromConvert()
+    {
         convert.action.started -= convertBtnHeld;
         convert.action.performed -= convertTrigger;
         convert.action.canceled -= convertTrigger;
-
-        pause.action.performed -= pauseTrigger;
     }
     #endregion
 }
