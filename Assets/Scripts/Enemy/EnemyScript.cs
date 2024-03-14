@@ -13,6 +13,8 @@ public class EnemyScript : MonoBehaviour
     public ParticleSystem particleSystemBadGhost;
     public GameObject badGhostRenderer;
     public GameObject goodGhostRenderer;
+    public GameObject badParticles;
+    public GameObject goodParticles;
     public float particleGoodDuration = 5f;
     public float particleBadDuration = 1f;
 
@@ -34,7 +36,10 @@ public class EnemyScript : MonoBehaviour
     {
         _goodOrBad = true;
         badGhostRenderer.SetActive(false);
+        badParticles.SetActive(false);
         goodGhostRenderer.SetActive(true);
+        goodParticles.SetActive(true);
+
 
         audioSource.PlayOneShot(dream);
         GhostArrived?.Invoke(true);
@@ -60,7 +65,9 @@ public class EnemyScript : MonoBehaviour
     {
         _goodOrBad = false;
         goodGhostRenderer.SetActive(false);
+        goodParticles.SetActive(false);
         badGhostRenderer.SetActive(true);
+        badParticles.SetActive(true);
         poolingSystem.pool.Release(this);
     }
 }
