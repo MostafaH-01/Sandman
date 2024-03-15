@@ -67,17 +67,27 @@ public class PathMovement : MonoBehaviour
     public void AssignNewNode()
     {
         List<Node> storedNodes = destinationNode.StoredNodes;
-        int randomNumber = Random.Range(0, storedNodes.Count);
 
-        if (storedNodes[randomNumber] == travelledNode)
+        if(storedNodes.Count == 1)
         {
-            AssignNewNode();
+            travelledNode = destinationNode;
+            destinationNode = storedNodes[0];
+            agent.destination = destinationNode.transform.position;
         }
         else
         {
-            travelledNode = destinationNode;
-            destinationNode = storedNodes[randomNumber];
-            agent.destination = destinationNode.transform.position;
+            int randomNumber = Random.Range(0, storedNodes.Count);
+
+            if (storedNodes[randomNumber] == travelledNode)
+            {
+                AssignNewNode();
+            }
+            else
+            {
+                travelledNode = destinationNode;
+                destinationNode = storedNodes[randomNumber];
+                agent.destination = destinationNode.transform.position;
+            }
         }
     }
     #endregion
