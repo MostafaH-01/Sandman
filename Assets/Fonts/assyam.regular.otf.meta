@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3e036f17d60e8d048a2fbf6710291894
+guid: 54109393d0f7b4a49bd8ebe450aecdb5
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Marhey
+  - Assyam
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
