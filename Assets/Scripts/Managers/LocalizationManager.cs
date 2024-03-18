@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LocalizationManager : MonoBehaviour
 {
@@ -12,8 +13,30 @@ public class LocalizationManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> englishElements;
 
+    [Header("Language Buttons")]
+    [SerializeField]
+    private Button arabicButton;
+    [SerializeField]
+    private Button englishButton;
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey("Language"))
+        {
+            switch (PlayerPrefs.GetString("Language"))
+            {
+                case "ar":
+                    arabicButton.onClick.Invoke();
+                    break;
+                case "en":
+                    englishButton.onClick.Invoke();
+                    break;
+            }
+        }
+    }
+
     public void ToggleLanguage(string language)
     {
+        PlayerPrefs.SetString("Language", language);
         if (language == "ar")
         {
             foreach (GameObject element in arabicElements)

@@ -19,6 +19,8 @@ public class ManagingGame : MonoBehaviour
     private GameObject HUD;
     [SerializeField]
     private GameObject DayNightCycle;
+    [SerializeField]
+    private Highscore highscoreManager;
 
     [Header("Objects To Turn Off After Starting Game")]
     [SerializeField]
@@ -45,6 +47,14 @@ public class ManagingGame : MonoBehaviour
     private GameObject endScreen;
     [SerializeField]
     private GameObject mobileControls;
+
+    [Header("Highscore Menu")]
+    [SerializeField]
+    private GameObject highscoreTable;
+    [SerializeField]
+    private GameObject enterNamePanel;
+    [SerializeField]
+    private TMP_InputField inputtedName;
 
     [Header("Game Settings")]
     [SerializeField]
@@ -84,6 +94,7 @@ public class ManagingGame : MonoBehaviour
     private int enemiesDefeated = 0;
     private float _currentTime;
     private bool _gameStarted = false;
+    private string _playerName;
     #endregion
 
     #region Singleton Setup
@@ -118,6 +129,7 @@ public class ManagingGame : MonoBehaviour
     private void Start()
     {
         ResetGame();
+        FillScoreTable();
 
         if (Application.platform == RuntimePlatform.Android)
         {
@@ -171,6 +183,8 @@ public class ManagingGame : MonoBehaviour
         HUD.SetActive(false);
         Spawning.SetActive(false);
         InputManager.SetActive(false);
+
+        HandleHighscore();
     }
 
     public void ResetGame()
@@ -192,6 +206,15 @@ public class ManagingGame : MonoBehaviour
     {
         Cursor.visible = true;
         SceneManager.LoadScene("GameScene");
+    }
+
+    private void HandleHighscore()
+    {
+        if (highscoreManager.CheckNewHighScore(enemiesDefeated))
+        {
+            enterNamePanel.SetActive(true);
+            highscoreTable.transform.parent.gameObject.SetActive(false);
+        }    
     }
     public List<float> GetEnemySettings()
     {
@@ -247,6 +270,17 @@ public class ManagingGame : MonoBehaviour
         Time.timeScale = Time.timeScale == 1 ? 0 : 1;
     }
 
+    public void DoneInputtingName()
+    {
+        _playerName = inputtedName.text;
+        enterNamePanel.SetActive(false);
+        highscoreTable.transform.parent.gameObject.SetActive(true);
+
+        highscoreManager.AddNewScore(_playerName, enemiesDefeated);
+
+        FillScoreTable();
+    }
+
     public void ChangeSensitivty()
     {
         playerCamera.m_XAxis.m_MaxSpeed = sensitivitySlider.value;
@@ -260,6 +294,19 @@ public class ManagingGame : MonoBehaviour
     public void ChangeSfxVolume()
     {
         sfxSource.volume = sfxSlider.value;
+    }
+    private void FillScoreTable()
+    {
+        List<Scorer> scoreList = highscoreManager.GetScoreList();
+        GameObject row;
+        for (int i = 0; i < scoreList.Count; i++)
+        {
+            row = highscoreTable.transform.GetChild(i + 1).gameObject;
+            row.SetActive(true);
+
+            row.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = scoreList[i].name;
+            row.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = scoreList[i].score.ToString();
+        }
     }
     #endregion
 

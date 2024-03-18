@@ -10,10 +10,10 @@ public class Highscore : MonoBehaviour
 
     private void Awake()
     {
-        GetScoreList();
+        GetScores();
     }
 
-    private void GetScoreList()
+    private void GetScores()
     {
         _scoreList = new List<Scorer>();
         for (int i = 0; i < 3; i++)
@@ -32,17 +32,38 @@ public class Highscore : MonoBehaviour
             PlayerPrefs.SetInt("Score" + i, _scoreList[i].score);
         }
     }
-    private bool CheckNewHighScore(Scorer currentPlayer)
+    public bool CheckNewHighScore(int score)
     {
+        if (_scoreList.Count < 3)
+            return true;
+
         for (int i = 0; i < _scoreList.Count; i++)
         {
-            if (currentPlayer.CompareTo(_scoreList[i]) > 0)
+            if (score > _scoreList[i].score)
             {
-                _scoreList.Insert(i, currentPlayer);
                 return true;
             }
         }
         return false;
+    }
+
+    public void AddNewScore(string name, int score)
+    {
+        _scoreList.Add(new Scorer(name, score));
+        _scoreList.Sort();
+        _scoreList.Reverse();
+
+        if (_scoreList.Count > 3)
+        {
+            _scoreList.RemoveAt(3);
+        }
+
+        StoreScoreList();
+    }
+
+    public List<Scorer> GetScoreList()
+    {
+        return _scoreList;
     }
 }
 public class Scorer : IComparable
