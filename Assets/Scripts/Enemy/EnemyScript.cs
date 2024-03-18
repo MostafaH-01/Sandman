@@ -6,8 +6,6 @@ using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
-    public AudioClip dream;
-    public AudioClip nightmare;
     public PoolingSystem poolingSystem;
     public ParticleSystem particleSystemGoodGhost;
     public ParticleSystem particleSystemBadGhost;
@@ -18,7 +16,6 @@ public class EnemyScript : MonoBehaviour
     public float particleGoodDuration = 5f;
     public float particleBadDuration = 1f;
 
-    private AudioSource audioSource;
     private NavMeshAgent navMeshAgent;
 
     public static event Action<bool> GhostArrived;
@@ -27,7 +24,6 @@ public class EnemyScript : MonoBehaviour
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         navMeshAgent.speed = ManagingGame.Instance.GetEnemySettings()[5]; // Setting enemy speed as it is in game manager
@@ -39,9 +35,6 @@ public class EnemyScript : MonoBehaviour
         badParticles.SetActive(false);
         goodGhostRenderer.SetActive(true);
         goodParticles.SetActive(true);
-
-
-        audioSource.PlayOneShot(dream);
         GhostArrived?.Invoke(true);
         EnemyDefeated?.Invoke();
     }
@@ -54,8 +47,6 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
-            audioSource.PlayOneShot(nightmare);
-
             particleSystemBadGhost.Play();
             GhostArrived?.Invoke(false);
         }

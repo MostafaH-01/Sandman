@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,6 +34,10 @@ public class ManagingGame : MonoBehaviour
     [SerializeField]
     private GameObject pauseMenu;
     [SerializeField]
+    private GameObject pauseMenuBackMain;
+    [SerializeField]
+    private GameObject pauseMenuBackGame;
+    [SerializeField]
     private GameObject winMenu;
     [SerializeField]
     private GameObject loseMenu;
@@ -46,6 +51,20 @@ public class ManagingGame : MonoBehaviour
     private float gameDuration;
     [SerializeField]
     private int pointsToEndGame;
+
+    [Header("For Settings Menu")]
+    [SerializeField]
+    private Slider sensitivitySlider;
+    [SerializeField]
+    private CinemachineFreeLook playerCamera;
+    [SerializeField]
+    private Slider musicSlider;
+    [SerializeField]
+    private AudioSource musicSource;
+    [SerializeField]
+    private Slider sfxSlider;
+    [SerializeField]
+    private AudioSource sfxSource;
 
     [Header("Enemy Settings")]
     [SerializeField]
@@ -221,8 +240,26 @@ public class ManagingGame : MonoBehaviour
     {
         HUD.SetActive(!HUD.activeSelf);
         pauseMenu.SetActive(!pauseMenu.activeSelf);
+        pauseMenuBackGame.SetActive(!pauseMenuBackGame.activeSelf);
+        pauseMenuBackMain.SetActive(!pauseMenuBackMain.activeSelf);
+
         Cursor.visible = pauseMenu.activeSelf;
         Time.timeScale = Time.timeScale == 1 ? 0 : 1;
+    }
+
+    public void ChangeSensitivty()
+    {
+        playerCamera.m_XAxis.m_MaxSpeed = sensitivitySlider.value;
+    }
+
+    public void ChangeMusicVolume()
+    {
+        musicSource.volume = musicSlider.value;
+    }
+
+    public void ChangeSfxVolume()
+    {
+        sfxSource.volume = sfxSlider.value;
     }
     #endregion
 
