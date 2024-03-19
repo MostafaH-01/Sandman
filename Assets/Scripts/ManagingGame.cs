@@ -36,10 +36,6 @@ public class ManagingGame : MonoBehaviour
     [SerializeField]
     private GameObject pauseMenu;
     [SerializeField]
-    private GameObject pauseMenuBackMain;
-    [SerializeField]
-    private GameObject pauseMenuBackGame;
-    [SerializeField]
     private GameObject winMenu;
     [SerializeField]
     private GameObject loseMenu;
@@ -85,6 +81,14 @@ public class ManagingGame : MonoBehaviour
     private Slider sfxSlider;
     [SerializeField]
     private AudioSource sfxSource;
+
+    [Header("For Settings In Pause Menu")]
+    [SerializeField]
+    private Slider sensitivityPauseSlider;
+    [SerializeField]
+    private Slider musicPauseSlider;
+    [SerializeField]
+    private Slider sfxPauseSlider;
 
     [Header("Enemy Settings")]
     [SerializeField]
@@ -140,6 +144,7 @@ public class ManagingGame : MonoBehaviour
     {
         ResetGame();
         FillScoreTable();
+        SetSettingsOnStart();
 
         if (Application.platform == RuntimePlatform.Android)
         {
@@ -276,10 +281,10 @@ public class ManagingGame : MonoBehaviour
     }
     public void PauseMenu()
     {
+        SetSettingsSliderFromPrefs("Pause");
+
         HUD.SetActive(!HUD.activeSelf);
         pauseMenu.SetActive(!pauseMenu.activeSelf);
-        pauseMenuBackGame.SetActive(!pauseMenuBackGame.activeSelf);
-        pauseMenuBackMain.SetActive(!pauseMenuBackMain.activeSelf);
 
         Cursor.visible = pauseMenu.activeSelf;
         Time.timeScale = Time.timeScale == 1 ? 0 : 1;
@@ -296,19 +301,87 @@ public class ManagingGame : MonoBehaviour
         FillScoreTable();
     }
 
-    public void ChangeSensitivty()
+    public void ChangeSensitivty(string menu)
     {
-        playerCamera.m_XAxis.m_MaxSpeed = sensitivitySlider.value;
+        if (menu == "Settings")
+        {
+            playerCamera.m_XAxis.m_MaxSpeed = sensitivitySlider.value;
+            PlayerPrefs.SetFloat("CamSensitivity", sensitivitySlider.value);
+        }
+        else if (menu == "Pause")
+        {
+            playerCamera.m_XAxis.m_MaxSpeed = sensitivityPauseSlider.value;
+            PlayerPrefs.SetFloat("CamSensitivity", sensitivityPauseSlider.value);
+        }
     }
 
-    public void ChangeMusicVolume()
+    public void ChangeMusicVolume(string menu)
     {
-        musicSource.volume = musicSlider.value;
+        if (menu == "Settings")
+        {
+            musicSource.volume = musicSlider.value;
+            PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
+        }
+        else if (menu == "Pause")
+        {
+            musicSource.volume = musicPauseSlider.value;
+            PlayerPrefs.SetFloat("MusicVolume", musicPauseSlider.value);
+        }
     }
 
-    public void ChangeSfxVolume()
+    public void ChangeSfxVolume(string menu)
     {
-        sfxSource.volume = sfxSlider.value;
+        if (menu == "Settings")
+        {
+            sfxSource.volume = sfxSlider.value;
+            PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
+        }
+        else if (menu == "Pause")
+        {
+            sfxSource.volume = sfxPauseSlider.value;
+            PlayerPrefs.SetFloat("SFXVolume", sfxPauseSlider.value);
+        }
+    }
+    public void SetSettingsSliderFromPrefs(string menu)
+    {
+        if (menu == "Settings")
+        {
+            if (PlayerPrefs.HasKey("CamSensitivity"))
+            {
+                sensitivitySlider.value = PlayerPrefs.GetFloat("CamSensitivity");
+            }
+            if (PlayerPrefs.HasKey("MusicVolume"))
+            {
+                musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+            }
+            if (PlayerPrefs.HasKey("SFXVolume"))
+            {
+                sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+            }
+        }
+        else if (menu == "Pause")
+        {
+            if (PlayerPrefs.HasKey("CamSensitivity"))
+            {
+                sensitivityPauseSlider.value = PlayerPrefs.GetFloat("CamSensitivity");
+            }
+            if (PlayerPrefs.HasKey("MusicVolume"))
+            {
+                musicPauseSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+            }
+            if (PlayerPrefs.HasKey("SFXVolume"))
+            {
+                sfxPauseSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+            }
+        }
+    }
+
+    private void SetSettingsOnStart()
+    {
+        SetSettingsSliderFromPrefs("Settings");
+        ChangeSensitivty("Settings");
+        ChangeMusicVolume("Settings");
+        ChangeSfxVolume("Settings");
     }
     private void FillScoreTable()
     {
