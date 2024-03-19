@@ -45,8 +45,18 @@ public class ManagingGame : MonoBehaviour
     private GameObject loseMenu;
     [SerializeField]
     private GameObject endScreen;
+
+    [Header("Mobile UI")]
     [SerializeField]
     private GameObject mobileControls;
+    [SerializeField]
+    private GameObject arabicMobileInstructions;
+    [SerializeField]
+    private GameObject englishMobileInstructions;
+    [SerializeField]
+    private GameObject arabicDesktopInstructions;
+    [SerializeField]
+    private GameObject englishDesktopInstructions;
 
     [Header("Highscore Menu")]
     [SerializeField]
@@ -134,6 +144,11 @@ public class ManagingGame : MonoBehaviour
         if (Application.platform == RuntimePlatform.Android)
         {
             mobileControls.SetActive(true);
+            arabicMobileInstructions.SetActive(true);
+            englishMobileInstructions.SetActive(true);
+
+            arabicDesktopInstructions.SetActive(false);
+            englishDesktopInstructions.SetActive(false);
         }
     }
     private void Update()
