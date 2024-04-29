@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -49,10 +51,18 @@ public class ManagingGame : MonoBehaviour
     private GameObject arabicMobileInstructions;
     [SerializeField]
     private GameObject englishMobileInstructions;
+
+    [Header ("Desktop UI")]
     [SerializeField]
     private GameObject arabicDesktopInstructions;
     [SerializeField]
     private GameObject englishDesktopInstructions;
+
+    [Header("Controller UI")]
+    [SerializeField]
+    private GameObject arabicControllerInstructions;
+    [SerializeField]
+    private GameObject englishControllerInstructions;
 
     [Header("Highscore Menu")]
     [SerializeField]
@@ -265,6 +275,29 @@ public class ManagingGame : MonoBehaviour
     {
         Application.Quit();
     }
+    public void ChangeSelectedButton(GameObject button)
+    {
+        EventSystem.current.SetSelectedGameObject(button);
+    }
+    private void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        if (device is Gamepad gamepad)
+        {
+            arabicControllerInstructions.SetActive(true);
+            englishControllerInstructions.SetActive(true);
+
+            arabicDesktopInstructions.SetActive(false);
+            englishDesktopInstructions.SetActive(false);
+        }
+        if (device is Keyboard keyboard)
+        {
+            arabicDesktopInstructions.SetActive(true);
+            englishDesktopInstructions.SetActive(true);
+
+            arabicControllerInstructions.SetActive(false);
+            englishControllerInstructions.SetActive(false);
+        }
+    }
     private void UpdateTimerDisplay()
     {
         var ts = TimeSpan.FromSeconds(_currentTime);
@@ -285,6 +318,15 @@ public class ManagingGame : MonoBehaviour
 
         HUD.SetActive(!HUD.activeSelf);
         pauseMenu.SetActive(!pauseMenu.activeSelf);
+
+        if (pauseMenu.activeSelf)
+        {
+            ChangeSelectedButton(sensitivityPauseSlider.gameObject);
+        }
+        else
+        {
+            ChangeSelectedButton(null);
+        }
 
         Cursor.visible = pauseMenu.activeSelf;
         Time.timeScale = Time.timeScale == 1 ? 0 : 1;
@@ -404,12 +446,16 @@ public class ManagingGame : MonoBehaviour
         EnemyScript.GhostArrived += PointManagement;
         EnemyScript.EnemyDefeated += IncrementDefeated;
         InputScript.pauseMenuTriggered += PauseMenu;
+
+        InputSystem.onDeviceChange += OnDeviceChange;
     }
     private void OnDisable()
     {
         EnemyScript.GhostArrived -= PointManagement;
         EnemyScript.EnemyDefeated -= IncrementDefeated;
         InputScript.pauseMenuTriggered -= PauseMenu;
+
+        InputSystem.onDeviceChange -= OnDeviceChange;
     }
     #endregion
 }
