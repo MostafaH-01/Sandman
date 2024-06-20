@@ -6,87 +6,39 @@ using UnityEngine.InputSystem;
 
 public class InputScript : MonoBehaviour
 {
-    #region Variables
-    [Header("Player Controls")]
-    [SerializeField]
-    private InputActionReference move;
-    [SerializeField]
-    private InputActionReference convert;
-    [SerializeField]
-    private InputActionReference pause;
-
-    [Header("Player Script")]
-    [SerializeField]
-    private PlayerActions playerActions;
-
-    private Vector2 _movement;
-
-    private Action<InputAction.CallbackContext> convertTrigger;
-    private Action<InputAction.CallbackContext> pauseTrigger;
-
-    public static event Action pauseMenuTriggered;
-    #endregion
-    public Vector2 Movement
-    {
-        get
-        {
-            return _movement;
-        }
-    }
+    private InputAction triggerAction;
     private void Awake()
     {
-        convertTrigger = (ctx) => convertBtnPressed();
-        pauseTrigger = (ctx) => PauseButtonPressed();
-    }
+        var playerInput = GetComponent<PlayerInput>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        MovementInput();
+        triggerAction = playerInput.actions["Interact"];
     }
-    #region Event Handlers
-    private void MovementInput()
+    private void OnMovement(InputValue value)
     {
-        _movement = move.action.ReadValue<Vector2>();
+        this.Move(value.Get<Vector2>());
     }
-
-    private void convertBtnPressed()
+    private void OnPause(InputValue value)
     {
-        // Check if pointer is in right position or not
-        playerActions.CheckNightmareSuccess();
+        this.Pause();
     }
-
-    private void convertBtnHeld(InputAction.CallbackContext context)
+    private void StartTrigger(InputAction.CallbackContext context)
     {
-        // Start minigame
-        playerActions.StartConvertNightmare();
+        this.StartTrigger();
     }
-
-    private void PauseButtonPressed()
+    private void TriggerPerformed(InputAction.CallbackContext context)
     {
-        pauseMenuTriggered?.Invoke();
+        this.TriggerPerformed();
     }
-    #endregion
-    #region Event Subscribing
     private void OnEnable()
     {
-        pause.action.performed += pauseTrigger;
+        triggerAction.started += StartTrigger;
+        triggerAction.performed += TriggerPerformed;
+        triggerAction.canceled += TriggerPerformed;
     }
     private void OnDisable()
     {
-        pause.action.performed -= pauseTrigger;
+        triggerAction.started -= StartTrigger;
+        triggerAction.performed -= TriggerPerformed;
+        triggerAction.canceled -= TriggerPerformed;
     }
-    public void SubscribeToConvert()
-    {
-        convert.action.started += convertBtnHeld;
-        convert.action.performed += convertTrigger;
-        convert.action.canceled += convertTrigger;
-    }
-    public void UnsubscribeFromConvert()
-    {
-        convert.action.started -= convertBtnHeld;
-        convert.action.performed -= convertTrigger;
-        convert.action.canceled -= convertTrigger;
-    }
-    #endregion
 }

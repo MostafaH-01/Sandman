@@ -14,25 +14,22 @@ public class EnemySpawner : MonoBehaviour
 
     #region Update
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        if (canSpawn)
-        {
-            StartCoroutine(Spawn());
-        }
+        InvokeRepeating ("Spawn", 0f, spawnRate);
     }
     #endregion
 
     #region Coroutine
 
-    private IEnumerator Spawn()
+    private void Spawn()
     {
-        canSpawn = false;
+        //canSpawn = false;
 
         int randomPool = Random.Range(0, enemyPools.Length);
         EnemyScript enemy = enemyPools[randomPool].pool.Get();
-        yield return new WaitForSeconds(spawnRate);
-        canSpawn = true;
+        //yield return new WaitForSeconds(spawnRate);
+        //canSpawn = true;
     }
 
     #endregion

@@ -119,6 +119,8 @@ public class ManagingGame : MonoBehaviour
     private float _currentTime;
     private bool _gameStarted = false;
     private string _playerName;
+
+    private bool _android = false;
     #endregion
 
     #region Singleton Setup
@@ -164,6 +166,9 @@ public class ManagingGame : MonoBehaviour
 
             arabicDesktopInstructions.SetActive(false);
             englishDesktopInstructions.SetActive(false);
+
+            _android = true;
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
     private void Update()
@@ -277,7 +282,13 @@ public class ManagingGame : MonoBehaviour
     }
     public void ChangeSelectedButton(GameObject button)
     {
-        EventSystem.current.SetSelectedGameObject(button);
+        if (!_android)
+        {
+            if (button != null && button.name != "Dummy")
+                EventSystem.current.SetSelectedGameObject(button);
+            else
+                EventSystem.current.SetSelectedGameObject(null);
+        }
     }
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
     {
@@ -445,7 +456,7 @@ public class ManagingGame : MonoBehaviour
     {
         EnemyScript.GhostArrived += PointManagement;
         EnemyScript.EnemyDefeated += IncrementDefeated;
-        InputScript.pauseMenuTriggered += PauseMenu;
+        InputInvoker.OnPause += PauseMenu;
 
         InputSystem.onDeviceChange += OnDeviceChange;
     }
@@ -453,7 +464,7 @@ public class ManagingGame : MonoBehaviour
     {
         EnemyScript.GhostArrived -= PointManagement;
         EnemyScript.EnemyDefeated -= IncrementDefeated;
-        InputScript.pauseMenuTriggered -= PauseMenu;
+        InputInvoker.OnPause -= PauseMenu;
 
         InputSystem.onDeviceChange -= OnDeviceChange;
     }
