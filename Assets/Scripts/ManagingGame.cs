@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -77,6 +78,10 @@ public class ManagingGame : MonoBehaviour
     private float gameDuration;
     [SerializeField]
     private int pointsToEndGame;
+    [SerializeField]
+    private GameData gameData;
+    [SerializeField]
+    private GameData defaultData;
 
     [Header("For Settings Menu")]
     [SerializeField]
@@ -91,6 +96,10 @@ public class ManagingGame : MonoBehaviour
     private Slider sfxSlider;
     [SerializeField]
     private AudioSource sfxSource;
+    [SerializeField]
+    private TMP_Dropdown renderQualityDropdown;
+    [SerializeField]
+    private List<RenderPipelineAsset> renderAssets;
 
     [Header("For Settings In Pause Menu")]
     [SerializeField]
@@ -121,6 +130,14 @@ public class ManagingGame : MonoBehaviour
     private string _playerName;
 
     private bool _android = false;
+
+    public GameData GameData
+    {
+        get
+        {
+            return gameData;
+        }
+    }
     #endregion
 
     #region Singleton Setup
@@ -359,12 +376,12 @@ public class ManagingGame : MonoBehaviour
         if (menu == "Settings")
         {
             playerCamera.m_XAxis.m_MaxSpeed = sensitivitySlider.value;
-            PlayerPrefs.SetFloat("CamSensitivity", sensitivitySlider.value);
+            gameData.camSensitivity = sensitivitySlider.value;
         }
         else if (menu == "Pause")
         {
             playerCamera.m_XAxis.m_MaxSpeed = sensitivityPauseSlider.value;
-            PlayerPrefs.SetFloat("CamSensitivity", sensitivityPauseSlider.value);
+            gameData.camSensitivity = sensitivityPauseSlider.value;
         }
     }
 
@@ -373,12 +390,12 @@ public class ManagingGame : MonoBehaviour
         if (menu == "Settings")
         {
             musicSource.volume = musicSlider.value;
-            PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
+            gameData.musicVolume = musicSlider.value;
         }
         else if (menu == "Pause")
         {
             musicSource.volume = musicPauseSlider.value;
-            PlayerPrefs.SetFloat("MusicVolume", musicPauseSlider.value);
+            gameData.musicVolume = musicPauseSlider.value;
         }
     }
 
@@ -387,46 +404,37 @@ public class ManagingGame : MonoBehaviour
         if (menu == "Settings")
         {
             sfxSource.volume = sfxSlider.value;
-            PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
+            gameData.sfxVolume = sfxSlider.value;
         }
         else if (menu == "Pause")
         {
             sfxSource.volume = sfxPauseSlider.value;
-            PlayerPrefs.SetFloat("SFXVolume", sfxPauseSlider.value);
+            gameData.sfxVolume = sfxPauseSlider.value;
         }
+    }
+
+    public void ChangeQuality(Int32 dropDownValue)
+    {
+        GraphicsSettings.renderPipelineAsset = renderAssets[dropDownValue];
+
+        gameData.renderAssetPipelineIndex = dropDownValue;
     }
     public void SetSettingsSliderFromPrefs(string menu)
     {
         if (menu == "Settings")
         {
-            if (PlayerPrefs.HasKey("CamSensitivity"))
-            {
-                sensitivitySlider.value = PlayerPrefs.GetFloat("CamSensitivity");
-            }
-            if (PlayerPrefs.HasKey("MusicVolume"))
-            {
-                musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-            }
-            if (PlayerPrefs.HasKey("SFXVolume"))
-            {
-                sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-            }
+            sensitivitySlider.value = gameData.camSensitivity;
+            musicSlider.value = gameData.musicVolume;
+            sfxSlider.value = gameData.sfxVolume;
         }
         else if (menu == "Pause")
         {
-            if (PlayerPrefs.HasKey("CamSensitivity"))
-            {
-                sensitivityPauseSlider.value = PlayerPrefs.GetFloat("CamSensitivity");
-            }
-            if (PlayerPrefs.HasKey("MusicVolume"))
-            {
-                musicPauseSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-            }
-            if (PlayerPrefs.HasKey("SFXVolume"))
-            {
-                sfxPauseSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-            }
+            sensitivityPauseSlider.value = gameData.camSensitivity;
+            musicPauseSlider.value = gameData.musicVolume;
+            sfxPauseSlider.value = gameData.sfxVolume;
         }
+
+        renderQualityDropdown.value = gameData.renderAssetPipelineIndex;
     }
 
     private void SetSettingsOnStart()

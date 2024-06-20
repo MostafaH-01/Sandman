@@ -20,23 +20,20 @@ public class LocalizationManager : MonoBehaviour
     private Button englishButton;
     private void Awake()
     {
-        if (PlayerPrefs.HasKey("Language"))
+        switch (ManagingGame.Instance.GameData.language)
         {
-            switch (PlayerPrefs.GetString("Language"))
-            {
-                case "ar":
-                    arabicButton.onClick.Invoke();
-                    break;
-                case "en":
-                    englishButton.onClick.Invoke();
-                    break;
-            }
+            case "ar":
+                arabicButton.onClick.Invoke();
+                break;
+            case "en":
+                englishButton.onClick.Invoke();
+                break;
         }
     }
 
     public void ToggleLanguage(string language)
     {
-        PlayerPrefs.SetString("Language", language);
+        ManagingGame.Instance.GameData.language = language;
         if (language == "ar")
         {
             foreach (GameObject element in arabicElements)
