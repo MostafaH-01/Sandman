@@ -36,6 +36,8 @@ public class ShowMinigame : MonoBehaviour
     private bool rightLeftFlag = false; // Left to right if true, right to left if false
     private bool converted = false;
     private Color _colorRed = Color.red;
+
+    public static event Action EngagedNightmareDisabled;
     #endregion
 
     private void Awake()
@@ -145,6 +147,10 @@ public class ShowMinigame : MonoBehaviour
     private void OnDisable()
     {
         RandomizePurpleCenter();
+        if (canvasParent.activeSelf)
+        {
+            EngagedNightmareDisabled?.Invoke();
+        }
         canvasParent.SetActive(false);
         converted = false;
         gameObject.tag = "Nightmare";

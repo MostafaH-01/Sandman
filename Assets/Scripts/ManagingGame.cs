@@ -75,13 +75,11 @@ public class ManagingGame : MonoBehaviour
 
     [Header("Game Settings")]
     [SerializeField]
-    private float gameDuration;
-    [SerializeField]
-    private int pointsToEndGame;
-    [SerializeField]
     private GameData gameData;
     [SerializeField]
     private GameData defaultData;
+    private float gameDuration;
+    private int pointsToEndGame;
 
     [Header("For Settings Menu")]
     [SerializeField]
@@ -171,9 +169,9 @@ public class ManagingGame : MonoBehaviour
     #endregion
     private void Start()
     {
+        SetSettingsOnStart();
         ResetGame();
         FillScoreTable();
-        SetSettingsOnStart();
 
         if (Application.platform == RuntimePlatform.Android)
         {
@@ -230,6 +228,7 @@ public class ManagingGame : MonoBehaviour
     private void EndGame()
     {
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
         _gameStarted = false;
         HUD.SetActive(false);
@@ -285,6 +284,8 @@ public class ManagingGame : MonoBehaviour
     public void GameStart()
     {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         _gameStarted = true;
 
         Spawning.SetActive(true);
@@ -357,6 +358,7 @@ public class ManagingGame : MonoBehaviour
         }
 
         Cursor.visible = pauseMenu.activeSelf;
+        Cursor.lockState = pauseMenu.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
         Time.timeScale = Time.timeScale == 1 ? 0 : 1;
     }
 
@@ -443,6 +445,9 @@ public class ManagingGame : MonoBehaviour
         ChangeSensitivty("Settings");
         ChangeMusicVolume("Settings");
         ChangeSfxVolume("Settings");
+
+        gameDuration = gameData.gameDuration;
+        pointsToEndGame = gameData.pointsToEndGame;
     }
     private void FillScoreTable()
     {

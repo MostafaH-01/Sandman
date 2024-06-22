@@ -99,6 +99,8 @@ public class PlayerActions : MonoBehaviour
 
             if (success)
             {
+                DecreaseGhostCount();
+
                 _showMinigame.ConvertGhost();
                 _enemyScript.OnPlayerSuccess();
 
@@ -112,12 +114,18 @@ public class PlayerActions : MonoBehaviour
                 _showMinigame.StopConvertNightmare();
         }
     }
+
+    private void DecreaseGhostCount()
+    {
+        _ghostsAroundPlayerCount--;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Nightmare")
         {
             // Keeps track of how many ghosts the player is around. This helps open only one mini game at a time
             _ghostsAroundPlayerCount++;
+
             if (!_inMiniGame)
             {
                 _inMiniGame = true;
@@ -142,7 +150,7 @@ public class PlayerActions : MonoBehaviour
                 _enemyScript = null;
                 _showMinigame = null; // Empty out enemy script reference
             }
-            _ghostsAroundPlayerCount--;
+            DecreaseGhostCount();
         }
     }
     private void OnEnable()
@@ -150,11 +158,15 @@ public class PlayerActions : MonoBehaviour
         InputInvoker.OnMovement += OnMove;
         InputInvoker.OnStartInteract += StartTrigger;
         InputInvoker.OnInteractPerformed += TriggerPerformed;
+
+        ShowMinigame.EngagedNightmareDisabled += DecreaseGhostCount;
     }
     private void OnDisable()
     {
         InputInvoker.OnMovement -= OnMove;
         InputInvoker.OnStartInteract -= StartTrigger;
         InputInvoker.OnInteractPerformed -= TriggerPerformed;
+
+        ShowMinigame.EngagedNightmareDisabled -= DecreaseGhostCount;
     }
 }
