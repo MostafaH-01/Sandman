@@ -711,8 +711,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2a7f56003a6f2488b666c12eb13770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dream: {fileID: 8300000, guid: d101e99f0011016499d094fa51e4e8c2, type: 3}
-  nightmare: {fileID: 8300000, guid: 0153f725456ede241aa68248c625aa60, type: 3}
   poolingSystem: {fileID: 0}
   particleSystemGoodGhost: {fileID: 1092646867626812490}
   particleSystemBadGhost: {fileID: 2273058640542483613}
@@ -1837,6 +1835,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2676405798547930091}
     m_Modifications:
+    - target: {fileID: 71010150797397771, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390657359857225630, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.99978393
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390657359857225630, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390657359857225630, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.99978393
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849063992118750213, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3991471703944825258, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
       propertyPath: m_Name
       value: Canvas Parent
@@ -1844,6 +1862,10 @@ PrefabInstance:
     - target: {fileID: 3991471703944825258, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954001056833763857, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6937730971496316439, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1899,6 +1921,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
+--- !u!1 &1777493853740630702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1035996233773470623, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
+  m_PrefabInstance: {fileID: 1642252745921745201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4089189281543065583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777493853740630702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433d11f0acddba043b4ceb4014e14b84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: 01d1a1974a75b234f8a832966f86749a, type: 2}
+  spriteName: barMid
 --- !u!1 &2427152634259757211 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3991471703944825258, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
@@ -1909,12 +1950,50 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3849063992118750213, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
   m_PrefabInstance: {fileID: 1642252745921745201}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3343055170544039544}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3343055170544039544 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4084376583037265737, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
+  m_PrefabInstance: {fileID: 1642252745921745201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1736155210786118874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3343055170544039544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433d11f0acddba043b4ceb4014e14b84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: 01d1a1974a75b234f8a832966f86749a, type: 2}
+  spriteName: barMid
+--- !u!1 &3446382146403890355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4115857292282668418, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}
+  m_PrefabInstance: {fileID: 1642252745921745201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4589304816305148134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3446382146403890355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433d11f0acddba043b4ceb4014e14b84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: 01d1a1974a75b234f8a832966f86749a, type: 2}
+  spriteName: arrow
 --- !u!224 &5384303607326744769 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6661553587002536432, guid: fe93906c98d70d746bd873cbc91457b0, type: 3}

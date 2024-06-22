@@ -20,24 +20,78 @@ SpriteAtlas:
       readable: 0
       crunchedCompression: 0
       sRGB: 1
-    platformSettings: []
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 50
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
-      padding: 4
+      padding: 2
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 1
-      enableTightPacking: 1
+      enableRotation: 0
+      enableTightPacking: 0
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
-    packables: []
+    packables:
+    - {fileID: 102900000, guid: 3ace05e5b3821af4cb31d729bdfcb860, type: 3}
+    - {fileID: 102900000, guid: 20f53d6928f432e4f8049e0c5813cbff, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300000, guid: d2d36c60b9467a04387e3872014497e8, type: 3}
+  - {fileID: 21300000, guid: 2a7048d60a8667f4c868ed448788f0be, type: 3}
+  - {fileID: 21300000, guid: d704e337ce5991242b6643b921f82770, type: 3}
+  - {fileID: 21300000, guid: 167d8c47bb13df14c95e176fb3fc6251, type: 3}
+  - {fileID: 21300000, guid: b580db0882bd0024c8c1b5c59c285771, type: 3}
+  - {fileID: 21300000, guid: 63fd638863d7ae2499c6ca91e4380212, type: 3}
+  - {fileID: 21300000, guid: 53bc3dc8d39d8e940a7da3db4ed18f16, type: 3}
+  - {fileID: 21300000, guid: 608b75e8ed3e96940916a09fbdcf29b9, type: 3}
+  - {fileID: 21300000, guid: fba058dc4e8ff98439bd75771e9760c5, type: 3}
+  - {fileID: 21300000, guid: b9b29f1ddbc80ad4796c4483deb953b7, type: 3}
+  - {fileID: 21300000, guid: 99f02b4db8165e341b8055c4279c8e20, type: 3}
+  - {fileID: 21300000, guid: d6a03a8d40958be45b3f01ac190bad68, type: 3}
+  - {fileID: 21300000, guid: 30cde2cef4f969f429a0c0ff133d11ba, type: 3}
+  - {fileID: 21300000, guid: e21c4bfeaca34314d81da371025bc410, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - GreyButtonBackground
+  - AndroidXButton
+  - letter-s
+  - letter-a
+  - MovePad
+  - letter-w
+  - left-click
+  - letter-d
+  - mouse
+  - PauseButton
+  - ControllerLeftStick
+  - ControllerRightStick
+  - GhostPic
+  - ButtonBackground
   m_RenderDataMap: {}
-  m_Tag: Atlas
+  m_Tag: MenuAtlas
   m_IsVariant: 0
